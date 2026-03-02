@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">PM Surya Ghar Rooftop Solar Placeholder</title>
+  <desc id="desc">Placeholder hero image for rooftop solar campaign.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#90caf9"/>
+      <stop offset="100%" stop-color="#e3f2fd"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#455a64"/>
+      <stop offset="100%" stop-color="#263238"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1350" cy="160" r="80" fill="#ffc107"/>
+  <rect x="0" y="620" width="1600" height="280" fill="#c8e6c9"/>
+  <polygon points="280,650 820,420 1360,650 1360,740 280,740" fill="url(#roof)"/>
+  <g fill="#0d47a1">
+    <rect x="420" y="540" width="210" height="110" rx="8"/>
+    <rect x="670" y="520" width="230" height="120" rx="8"/>
+    <rect x="940" y="540" width="220" height="110" rx="8"/>
+  </g>
+  <g stroke="#ffffff" stroke-width="2" opacity="0.7">
+    <line x1="440" y1="560" x2="610" y2="630"/>
+    <line x1="460" y1="540" x2="630" y2="610"/>
+    <line x1="690" y1="540" x2="880" y2="620"/>
+    <line x1="710" y1="520" x2="900" y2="600"/>
+    <line x1="960" y1="560" x2="1140" y2="630"/>
+    <line x1="980" y1="540" x2="1160" y2="610"/>
+  </g>
+  <text x="80" y="150" font-family="Arial, sans-serif" font-size="56" fill="#0d47a1" font-weight="700">PM Surya Ghar Rooftop Solar</text>
+  <text x="80" y="220" font-family="Arial, sans-serif" font-size="34" fill="#2e7d32" font-weight="600">Replace this file with your preferred campaign image</text>
+</svg>
