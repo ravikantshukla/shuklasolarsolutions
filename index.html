@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rooftop Solar Installation in Uttar Pradesh | Shukla Solar Solution</title>
+  <meta name="description" content="Shukla Solar Solution helps homeowners in Uttar Pradesh install rooftop solar under PM Surya Ghar Muft Bijli Yojana with subsidy support, fast installation, and savings up to ₹60,000/year." />
+  <meta name="keywords" content="solar rooftop, PM Surya Ghar, subsidy, solar installation UP, rooftop solar Uttar Pradesh, Shukla Solar Solution" />
+  <meta name="author" content="Shukla Solar Solution" />
+  <meta property="og:title" content="Rooftop Solar Installation in Uttar Pradesh | Shukla Solar Solution" />
+  <meta property="og:description" content="Install rooftop solar with subsidy support under PM Surya Ghar Yojana. Save ₹30,000–₹60,000 every year with Shukla Solar Solution." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.github.io/shukla-solar-solution" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=70" />
+  <meta name="theme-color" content="#FFC107" />
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <style>
+    :root {
+      --primary: #FFC107;
+      --secondary: #0D47A1;
+      --accent: #2E7D32;
+      --bg: #ffffff;
+      --danger-start: #d50000;
+      --danger-end: #ff1744;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --card: #f9fbff;
+      --shadow: 0 10px 30px rgba(13, 71, 161, 0.12);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    .container { width: min(1100px, 92%); margin-inline: auto; }
+
+    .urgency-banner {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      color: #fff;
+      background: linear-gradient(90deg, var(--danger-start), var(--danger-end));
+      text-align: center;
+      padding: 0.65rem 1rem;
+      font-weight: 700;
+      letter-spacing: .2px;
+      transition: transform .35s ease, opacity .35s ease;
+    }
+    .urgency-banner.hidden { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+
+    .hero {
+      position: relative;
+      min-height: 82vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: #fff;
+      isolation: isolate;
+      text-align: center;
+      padding: 5.5rem 0 4rem;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      filter: saturate(1.05);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(115deg, rgba(13, 71, 161, 0.9), rgba(46, 125, 50, 0.7));
+    }
+    h1, h2, h3 { line-height: 1.2; margin: 0 0 .8rem; }
+    h1 { font-size: clamp(1.8rem, 4.6vw, 3.2rem); }
+    .hero p { font-size: clamp(1rem, 2.8vw, 1.3rem); margin-bottom: 1.8rem; }
+
+    .btn-group { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      padding: .82rem 1.25rem;
+      transition: transform .15s ease, opacity .2s ease;
+      min-width: 220px;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--primary); color: #1f1f1f; }
+    .btn-secondary { background: #fff; color: var(--secondary); }
+
+    section { padding: 3.2rem 0; }
+    .section-title { text-align: center; margin-bottom: 1.3rem; font-size: clamp(1.35rem, 3.8vw, 2.1rem); }
+    .section-subtitle { text-align: center; margin: -.3rem auto 2rem; max-width: 700px; color: var(--muted); }
+
+    .comparison {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    .comparison-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      border: 1px solid #e5ecff;
+      box-shadow: var(--shadow);
+    }
+    .comparison-card h3 { color: var(--secondary); }
+    .price { font-size: 1.3rem; font-weight: 800; margin: .4rem 0; }
+    .save-banner {
+      margin-top: 1rem;
+      text-align: center;
+      background: linear-gradient(90deg, var(--primary), #ffe082);
+      color: #3e2f00;
+      font-weight: 800;
+      border-radius: 12px;
+      padding: .95rem;
+      animation: pulse 1.8s infinite;
+    }
+
+    .calculator {
+      background: linear-gradient(180deg, #f7faff, #ffffff);
+      border: 1px solid #e8efff;
+      border-radius: var(--radius);
+      padding: 1.1rem;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 1.1rem;
+    }
+    .form-grid { display: grid; gap: .9rem; }
+    .field label { display: block; font-weight: 600; margin-bottom: .35rem; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      border: 1px solid #cfd8e3;
+      border-radius: 10px;
+      font: inherit;
+      padding: .72rem .8rem;
+      background: #fff;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid #bbdefb; border-color: var(--secondary); }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .7rem;
+    }
+    .result {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid #dce7ff;
+      padding: .8rem;
+      min-height: 92px;
+    }
+    .result small { color: var(--muted); display: block; }
+    .result strong { color: var(--accent); font-size: 1.1rem; }
+
+    .benefit-grid, .scheme-grid, .testimonial-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    .tile {
+      padding: 1rem;
+      border-radius: var(--radius);
+      border: 1px solid #e6edf6;
+      background: #fff;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    }
+    .tile h3 { color: var(--secondary); font-size: 1.1rem; margin-bottom: .5rem; }
+
+    .testimonial { border-left: 4px solid var(--primary); }
+    .testimonial p { margin: 0 0 .6rem; color: #3f4a59; }
+    .person { font-weight: 700; color: var(--secondary); }
+
+    .lead-form {
+      background: #fffdf6;
+      border: 1px solid #ffecb3;
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .success-popup {
+      position: fixed;
+      inset: auto 1rem 1rem 1rem;
+      max-width: 430px;
+      margin-inline: auto;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 12px;
+      padding: .9rem 1rem;
+      box-shadow: var(--shadow);
+      transform: translateY(130%);
+      transition: transform .3s ease;
+      z-index: 1000;
+      text-align: center;
+      font-weight: 600;
+    }
+    .success-popup.show { transform: translateY(0); }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 1000;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, .45);
+      animation: pulse 1.6s infinite;
+    }
+
+    footer {
+      background: #0b2f70;
+      color: #e7ecf8;
+      padding: 2rem 0;
+      margin-top: 2.2rem;
+    }
+    footer a { color: #fff59d; }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    @media (min-width: 768px) {
+      .comparison { grid-template-columns: 1fr 1fr; }
+      .form-grid { grid-template-columns: 1fr 1fr; }
+      .result-grid { grid-template-columns: repeat(4, 1fr); }
+      .benefit-grid, .scheme-grid, .testimonial-grid { grid-template-columns: repeat(3, 1fr); }
+      .lead-form .form-grid { grid-template-columns: repeat(2, 1fr); }
+      .lead-form .field:last-child { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="urgency-banner" id="urgencyBanner">⚡ Limited Subsidy Slots Available Under PM Surya Ghar Yojana – Apply Now!</div>
+
+  <header class="hero" id="top">
+    <img
+      class="hero-bg"
+      src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1600&q=70"
+      alt="Indian rooftop solar panels"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="container">
+      <h1>Switch to Solar &amp; Save ₹30,000–₹60,000 Every Year!</h1>
+      <p>Install Rooftop Solar with Government Subsidy under PM Surya Ghar Scheme.</p>
+      <div class="btn-group">
+        <a href="#lead-form" class="btn btn-primary">Get Free Solar Consultation</a>
+        <a href="#emi-calculator" class="btn btn-secondary">Calculate Your Savings</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Before vs After Solar Bill Comparison</h2>
+        <div class="comparison">
+          <article class="comparison-card" aria-label="Before solar pricing">
+            <h3>Before Solar</h3>
+            <div class="price">Monthly Bill: ₹3000</div>
+            <div class="price">Yearly Cost: ₹36,000</div>
+          </article>
+          <article class="comparison-card" aria-label="After solar pricing">
+            <h3>After Solar</h3>
+            <div class="price">Monthly Bill: ₹200–₹500</div>
+            <div class="price">Yearly Cost: ₹2,400–₹6,000</div>
+          </article>
+        </div>
+        <div class="save-banner">You Save ₹30,000+ Every Year</div>
+      </div>
+    </section>
+
+    <section id="emi-calculator">
+      <div class="container">
+        <h2 class="section-title">Solar EMI &amp; Savings Calculator</h2>
+        <p class="section-subtitle">Estimate your net installation cost, EMI, and payback timeline instantly.</p>
+        <div class="calculator">
+          <div class="form-grid">
+            <div class="field">
+              <label for="systemSize">System Size (kW)</label>
+              <select id="systemSize" aria-label="System size">
+                <option value="1">1 kW</option>
+                <option value="2">2 kW</option>
+                <option value="3" selected>3 kW</option>
+                <option value="5">5 kW</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="systemCost">Total System Cost (₹)</label>
+              <input id="systemCost" type="number" readonly />
+            </div>
+            <div class="field">
+              <label for="subsidy">Subsidy (40%) (₹)</label>
+              <input id="subsidy" type="number" readonly />
+            </div>
+            <div class="field">
+              <label for="tenure">Loan Tenure (years)</label>
+              <select id="tenure">
+                <option value="3">3 years</option>
+                <option value="5" selected>5 years</option>
+                <option value="7">7 years</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="interest">Interest Rate (% per annum)</label>
+              <input id="interest" type="number" value="10" min="1" max="24" step="0.1" />
+            </div>
+          </div>
+
+          <div class="result-grid" aria-live="polite">
+            <div class="result"><small>Net Cost After Subsidy</small><strong id="netCost">₹0</strong></div>
+            <div class="result"><small>Monthly EMI</small><strong id="emi">₹0</strong></div>
+            <div class="result"><small>Annual Savings</small><strong id="annualSavings">₹0</strong></div>
+            <div class="result"><small>Estimated Payback</small><strong id="payback">0 years</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Why Choose Shukla Solar Solution</h2>
+        <div class="benefit-grid">
+          <article class="tile"><h3>MNRE-aligned Installation</h3><p>Design and installation follow approved technical standards for subsidy eligibility.</p></article>
+          <article class="tile"><h3>Subsidy Documentation Support</h3><p>End-to-end help for portal registration, paperwork, and claim processing.</p></article>
+          <article class="tile"><h3>Net Metering Assistance</h3><p>Quick guidance for DISCOM approvals and seamless net meter integration.</p></article>
+          <article class="tile"><h3>25-year Performance Warranty</h3><p>Long-life solar panels and reliable components with assured output performance.</p></article>
+          <article class="tile"><h3>Installation in 7–10 Days</h3><p>Fast, professional installation so your home starts saving sooner.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">PM Surya Ghar Muft Bijli Yojana Benefits</h2>
+        <div class="scheme-grid">
+          <article class="tile"><h3>Up to 40% Subsidy</h3><p>Reduce upfront solar cost through direct government subsidy support.</p></article>
+          <article class="tile"><h3>Free Electricity up to 300 Units</h3><p>Offset major household usage and drastically lower monthly electricity bills.</p></article>
+          <article class="tile"><h3>Government-backed Program</h3><p>Trusted national initiative encouraging residential rooftop solar adoption.</p></article>
+          <article class="tile"><h3>Supports Rooftop Solar</h3><p>Designed specifically to empower homeowners to install rooftop systems.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">What Homeowners Say</h2>
+        <div class="testimonial-grid">
+          <article class="tile testimonial">
+            <p>"My monthly bill in Lucknow dropped from around ₹3200 to under ₹400. Team handled everything, including subsidy documents."</p>
+            <div class="person">— Ritesh Verma, Lucknow</div>
+          </article>
+          <article class="tile testimonial">
+            <p>"Very smooth process in Kanpur. Installation completed in one week, and net metering was done without stress."</p>
+            <div class="person">— Sangeeta Mishra, Kanpur</div>
+          </article>
+          <article class="tile testimonial">
+            <p>"We were confused about PM Surya Ghar. Shukla Solar explained all steps clearly and now we save every month."</p>
+            <div class="person">— Amit Srivastava, Prayagraj</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="lead-form">
+      <div class="container">
+        <h2 class="section-title">Book Your Free Solar Consultation</h2>
+        <p class="section-subtitle">Fill in your details and our solar advisor will call you shortly.</p>
+        <form class="lead-form" id="solarForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="fullName">Full Name</label>
+              <input id="fullName" name="fullName" type="text" required />
+            </div>
+            <div class="field">
+              <label for="mobile">Mobile Number</label>
+              <input id="mobile" name="mobile" type="tel" pattern="[0-9]{10}" maxlength="10" required />
+            </div>
+            <div class="field">
+              <label for="city">City</label>
+              <input id="city" name="city" type="text" required />
+            </div>
+            <div class="field">
+              <label for="monthlyBill">Monthly Electricity Bill (₹)</label>
+              <input id="monthlyBill" name="monthlyBill" type="number" min="0" required />
+            </div>
+            <div class="field">
+              <label for="roofType">Roof Type</label>
+              <select id="roofType" name="roofType" required>
+                <option value="">Select Roof Type</option>
+                <option value="RCC">RCC</option>
+                <option value="Tin Shed">Tin Shed</option>
+                <option value="Tile Roof">Tile Roof</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell us your requirement..."></textarea>
+            </div>
+          </div>
+          <div style="margin-top: 1rem;">
+            <button class="btn btn-primary" type="submit">Submit Application</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Shukla Solar Solution</strong></p>
+      <p>Phone: <a href="tel:+919100000000">+91 91000 00000</a> | Email: <a href="mailto:info@shuklasolarsolution.in">info@shuklasolarsolution.in</a></p>
+      <p>Location: Uttar Pradesh, India</p>
+      <p><a href="#" aria-label="Privacy Policy">Privacy Policy</a></p>
+      <p>© <span id="year"></span> Shukla Solar Solution. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <a
+    class="whatsapp-float"
+    href="https://wa.me/91XXXXXXXXXX?text=Hi%20I%20am%20interested%20in%20Rooftop%20Solar%20under%20PM%20Surya%20Ghar%20Yojana"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contact on WhatsApp"
+    title="Chat on WhatsApp"
+  >🟢</a>
+
+  <div class="success-popup" id="successPopup">Thank you! Your request has been submitted successfully.</div>
+
+  <script>
+    (() => {
+      const yearlyBillBeforeSolar = 36000;
+      const costPerKW = 60000;
+      const subsidyRate = 0.4;
+
+      const el = {
+        systemSize: document.getElementById('systemSize'),
+        systemCost: document.getElementById('systemCost'),
+        subsidy: document.getElementById('subsidy'),
+        tenure: document.getElementById('tenure'),
+        interest: document.getElementById('interest'),
+        netCost: document.getElementById('netCost'),
+        emi: document.getElementById('emi'),
+        annualSavings: document.getElementById('annualSavings'),
+        payback: document.getElementById('payback')
+      };
+
+      const formatINR = (num) => `₹${Math.round(num).toLocaleString('en-IN')}`;
+
+      function calculateEMI(principal, annualRate, tenureYears) {
+        const monthlyRate = annualRate / 12 / 100;
+        const months = tenureYears * 12;
+        if (monthlyRate === 0) return principal / months;
+        const factor = Math.pow(1 + monthlyRate, months);
+        return (principal * monthlyRate * factor) / (factor - 1);
+      }
+
+      function updateCalculator() {
+        const size = Number(el.systemSize.value);
+        const totalCost = size * costPerKW;
+        const subsidy = totalCost * subsidyRate;
+        const netCost = totalCost - subsidy;
+        const tenure = Number(el.tenure.value);
+        const rate = Number(el.interest.value) || 0;
+
+        const monthlyEMI = calculateEMI(netCost, rate, tenure);
+        const annualSavings = Math.max(30000, yearlyBillBeforeSolar - 4800);
+        const paybackYears = netCost / annualSavings;
+
+        el.systemCost.value = Math.round(totalCost);
+        el.subsidy.value = Math.round(subsidy);
+        el.netCost.textContent = formatINR(netCost);
+        el.emi.textContent = formatINR(monthlyEMI);
+        el.annualSavings.textContent = formatINR(annualSavings);
+        el.payback.textContent = `${paybackYears.toFixed(1)} years`;
+      }
+
+      Object.values(el).forEach(node => {
+        if (node && ['SELECT', 'INPUT'].includes(node.tagName)) {
+          node.addEventListener('input', updateCalculator);
+        }
+      });
+      updateCalculator();
+
+      const banner = document.getElementById('urgencyBanner');
+      window.addEventListener('scroll', () => {
+        banner.classList.toggle('hidden', window.scrollY > 120);
+      }, { passive: true });
+
+      const form = document.getElementById('solarForm');
+      const popup = document.getElementById('successPopup');
+      const webhookUrl = 'YOUR_MAKE_WEBHOOK_URL';
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData = {
+          full_name: form.fullName.value.trim(),
+          mobile: form.mobile.value.trim(),
+          city: form.city.value.trim(),
+          monthly_bill: form.monthlyBill.value,
+          roof_type: form.roofType.value,
+          message: form.message.value.trim(),
+          source: 'Landing Page'
+        };
+
+        if (!/^\d{10}$/.test(formData.mobile)) {
+          alert('Please enter a valid 10-digit mobile number.');
+          return;
+        }
+
+        try {
+          const response = await fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+          });
+
+          if (!response.ok) throw new Error('Submission failed');
+
+          form.reset();
+          popup.classList.add('show');
+          setTimeout(() => popup.classList.remove('show'), 3200);
+        } catch (error) {
+          alert('Unable to submit right now. Please call us directly.');
+        }
+      });
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
