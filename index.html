@@ -182,7 +182,7 @@
        <div class="grid grid-cols-3 gap-4 mt-12">
         <div class="stats-card rounded-2xl p-4 text-center border border-white/10">
          <div class="text-2xl md:text-3xl font-bold gradient-text font-space">
-          500+
+          50+
          </div>
          <div class="text-xs md:text-sm text-gray-400 mt-1">
           Installations
@@ -190,7 +190,7 @@
         </div>
         <div class="stats-card rounded-2xl p-4 text-center border border-white/10">
          <div class="text-2xl md:text-3xl font-bold gradient-text font-space">
-          5MW+
+          2MW+
          </div>
          <div class="text-xs md:text-sm text-gray-400 mt-1">
           Capacity Installed
@@ -279,7 +279,7 @@
           </svg>
          </div>
          <div>
-          <h4 class="font-semibold mb-1">MNRE Approved</h4>
+          <h4 class="font-semibold mb-1">UPNEDA | MNRE Approved</h4>
           <p class="text-sm text-gray-400">Government certified vendor</p>
          </div>
         </div>
@@ -613,7 +613,7 @@
          </div>
          <div>
           <h4 class="font-semibold mb-1">Phone</h4>
-          <p id="contact-phone" class="text-gray-400">+91 98765 43210</p>
+          <p id="contact-phone" class="text-gray-400">+91 9628275110 | 7376986992</p>
          </div>
         </div>
         <div class="flex items-start gap-4">
@@ -623,7 +623,7 @@
          </div>
          <div>
           <h4 class="font-semibold mb-1">Email</h4>
-          <p id="contact-email" class="text-gray-400">info@shuklasolarsolutions.in</p>
+          <p id="contact-email" class="text-gray-400">shuklasolarsolutions@gmail.com</p>
          </div>
         </div>
         <div class="flex items-start gap-4">
@@ -639,7 +639,7 @@
        </div><!-- Trust Badges -->
        <div class="mt-10 flex flex-wrap gap-4">
         <div class="px-4 py-2 bg-slate-800/50 rounded-lg border border-white/10">
-         <p class="text-xs text-gray-400">🏆 MNRE Approved</p>
+         <p class="text-xs text-gray-400">🏆 UPNEDA | MNRE Approved</p>
         </div>
         <div class="px-4 py-2 bg-slate-800/50 rounded-lg border border-white/10">
          <p class="text-xs text-gray-400">✅ ISO Certified</p>
@@ -880,5 +880,45 @@
       lastScroll = currentScroll;
     });
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d5f869d61f4a792',t:'MTc3MjQ0NTMyNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/8ge5x99gs431omqhebetr3ilhosigpqr";
+
+function classifyLead(billRange) {
+  if (billRange === "10000-20000" || billRange === "20000+") return "HOT";
+  if (billRange === "5000-10000") return "WARM";
+  return "NORMAL";
+}
+
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+  console.log("Form submitted");
+
+  const data = {
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    email: document.getElementById("email").value,
+    city: document.getElementById("city").value,
+    bill: document.getElementById("bill").value,
+    message: document.getElementById("message").value,
+    leadType: classifyLead(document.getElementById("bill").value),
+    timestamp: new Date().toISOString()
+  };
+
+  await fetch(MAKE_WEBHOOK_URL, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data)
+  });
+
+  alert("Submitted successfully");
+  form.reset();
+});
+
+});
+</script>
+</body>
 </html>
