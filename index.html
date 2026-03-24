@@ -183,9 +183,55 @@
     .pkg-card:hover { transform: translateY(-4px); border-color: rgba(249,115,22,0.4) !important; }
     .pkg-card.selected { border-color: #f97316 !important; background: rgba(249,115,22,0.1) !important; box-shadow: 0 0 30px rgba(249,115,22,0.2); }
     .pkg-card.selected .pkg-check { display: flex !important; }
+    .lang-btn { background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.4); color: #fb923c; border-radius: 8px; padding: 5px 12px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s ease; font-family: 'Outfit', sans-serif; letter-spacing: 0.5px; }
+    .lang-btn:hover { background: rgba(249,115,22,0.25); border-color: #f97316; }
+    .call-btn {
+      position: fixed;
+      bottom: 160px;
+      right: 20px;
+      z-index: 100;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(249,115,22,0.5);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    @media (min-width: 768px) { .call-btn { display: flex; } }
+    .call-btn:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(249,115,22,0.7); }
+    .city-card { transition: all 0.3s ease; }
+    .city-card:hover { transform: translateY(-4px); border-color: rgba(249,115,22,0.4) !important; background: rgba(249,115,22,0.05) !important; }
   </style>
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Shukla Solar Solutions",
+    "description": "Premium rooftop solar installation company serving Uttar Pradesh. Specializing in residential and commercial solar systems, PM Surya Ghar Yojana subsidy processing, and AMC services.",
+    "url": "https://shuklasolarsolutions.in",
+    "telephone": "+919628275110",
+    "email": "info@shuklasolarsolutions.in",
+    "priceRange": "₹₹",
+    "openingHours": "Mo-Sa 09:00-18:00",
+    "areaServed": ["Lucknow", "Prayagraj", "Kanpur", "Varanasi", "Gorakhpur", "Agra", "Meerut", "Ghaziabad", "Noida", "Jhansi", "Bareilly", "Mathura"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Solar Installation Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Residential Solar Installation", "description": "1kW–10kW rooftop solar systems for homes"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Commercial Solar Installation", "description": "10kW–500kW solar systems for businesses"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Solar AMC & Maintenance", "description": "Annual maintenance contracts for solar plants"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Government Subsidy Assistance", "description": "PM Surya Ghar Muft Bijli Yojana subsidy processing"}}
+      ]
+    }
+  }
+  </script>
  </head>
  <body class="h-full overflow-auto scroll-smooth">
   <div id="app-wrapper" class="w-full min-h-full solar-gradient text-white font-outfit"><!-- Navigation -->
@@ -217,8 +263,10 @@
        </div>
       </div><!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-8"><a href="#home" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Home</a> <a href="#about" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">About</a> <a href="#services" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</a> <a href="#book-service" class="nav-link text-sm font-medium text-orange-400 hover:text-orange-300 transition-colors">Book Service</a> <a href="#benefits" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Benefits</a> <a href="#calculator" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Calculator</a> <a href="#faq" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">FAQ</a> <a href="#contact" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Contact</a>
-      </div><!-- CTA Button -->
-      <div class="hidden md:block"><a href="#contact" class="btn-primary px-6 py-2.5 rounded-full text-sm font-semibold text-white"> Get Free Quote </a>
+      </div><!-- Lang Toggle + CTA -->
+      <div class="hidden md:flex items-center gap-3">
+       <button id="lang-toggle" class="lang-btn" onclick="toggleLang()">हि</button>
+       <a href="#contact" class="btn-primary px-6 py-2.5 rounded-full text-sm font-semibold text-white"> Get Free Quote </a>
       </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors">
        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
        </svg></button>
@@ -226,6 +274,7 @@
     </div><!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden hidden bg-slate-900/95 backdrop-blur-lg border-t border-white/10">
      <div class="px-4 py-4 space-y-3"><a href="#home" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Home</a> <a href="#about" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">About</a> <a href="#services" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Services</a> <a href="#book-service" class="block py-2 text-orange-400 hover:text-orange-300 transition-colors font-semibold">Book Service</a> <a href="#benefits" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Benefits</a> <a href="#calculator" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Calculator</a> <a href="#faq" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">FAQ</a> <a href="#contact" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Contact</a> <a href="#contact" class="btn-primary block text-center py-3 rounded-full text-sm font-semibold mt-4">Get Free Quote</a>
+      <button class="lang-btn w-full mt-2 py-2" onclick="toggleLang()">हि — हिंदी में पढ़ें</button>
      </div>
     </div>
    </nav><!-- Hero Section -->
@@ -740,6 +789,26 @@
        </div>
        <p class="text-xs text-gray-500 mt-4">* Subsidy directly credited to your bank account by the government. We handle all paperwork for free.</p>
       </div>
+      <!-- EMI Calculator -->
+      <div class="mt-6 p-6 bg-blue-500/10 rounded-2xl border border-blue-500/20">
+       <h4 id="emi-heading" class="font-semibold text-blue-300 mb-1">💳 EMI Calculator — Monthly Payment Estimate</h4>
+       <p class="text-xs text-gray-500 mb-4" id="emi-subtext">Based on system cost after subsidy at ~7.5% p.a. (green energy loan rate)</p>
+       <div class="grid grid-cols-3 gap-4 text-center text-sm">
+        <div class="bg-blue-900/20 rounded-xl p-4">
+         <div class="text-white font-bold text-xl font-space" id="emi-3yr">₹3,500/mo</div>
+         <div class="text-gray-400 mt-1">3 Year Loan</div>
+        </div>
+        <div class="bg-blue-900/20 rounded-xl p-4 border border-blue-500/30">
+         <div class="text-blue-300 font-bold text-xl font-space" id="emi-5yr">₹2,300/mo</div>
+         <div class="text-gray-400 mt-1">5 Year Loan</div>
+        </div>
+        <div class="bg-blue-900/20 rounded-xl p-4">
+         <div class="text-white font-bold text-xl font-space" id="emi-7yr">₹1,800/mo</div>
+         <div class="text-gray-400 mt-1">7 Year Loan</div>
+        </div>
+       </div>
+       <p class="text-xs text-gray-500 mt-3" id="emi-note">* Actual EMI depends on lender terms. Many banks offer special green energy loans. Ask us for referrals.</p>
+      </div>
      </div>
     </div>
    </section><!-- Testimonials Section -->
@@ -787,7 +856,7 @@
      </div>
     </div>
    </section><!-- Process Section -->
-   <section class="py-20 md:py-32 relative">
+   <section id="process" class="py-20 md:py-32 relative">
     <div class="section-divider w-full mb-20"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="text-center mb-16"><span class="text-orange-400 text-sm font-semibold tracking-widest uppercase">How It Works</span>
@@ -884,7 +953,7 @@
          </div>
          <div>
           <h4 class="font-semibold mb-1">Address</h4>
-          <p class="text-gray-400">Serving across India</p>
+          <p class="text-gray-400">Serving across UP</p>
          </div>
         </div>
        </div><!-- Trust Badges -->
@@ -981,7 +1050,121 @@
       </div>
      </div>
     </div>
-   </section><!-- Footer -->
+   </section>
+
+   <!-- Service Coverage Area Section -->
+   <section id="service-area" class="py-20 md:py-28 relative">
+    <div class="section-divider w-full mb-20"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12">
+      <span id="area-badge" class="text-orange-400 text-sm font-semibold tracking-widest uppercase">Service Area</span>
+      <h2 id="area-title" class="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 font-space">Cities We <span class="gradient-text">Serve</span></h2>
+      <p id="area-subtitle" class="text-gray-400 text-lg mt-4">Expert solar installations across Uttar Pradesh and nearby regions</p>
+     </div>
+     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      <div class="city-card bg-slate-800/50 rounded-2xl p-5 border border-white/10 text-center">
+       <div class="text-3xl mb-3">⭐</div>
+       <div class="font-semibold text-sm">Lucknow</div>
+       <div class="text-xs text-orange-400 mt-1">Headquarters</div>
+      </div>
+      <div class="city-card bg-slate-800/50 rounded-2xl p-5 border border-white/10 text-center">
+       <div class="text-3xl mb-3">🏙️</div>
+       <div class="font-semibold text-sm">Prayagraj</div>
+       <div class="text-xs text-gray-500 mt-1">Key Region</div>
+      </div>
+      <div class="city-card bg-slate-800/50 rounded-2xl p-5 border border-white/10 text-center">
+       <div class="text-3xl mb-3">🏙️</div>
+       <div class="font-semibold text-sm">Kanpur</div>
+       <div class="text-xs text-gray-500 mt-1">Industrial Hub</div>
+      </div>
+      <div class="city-card bg-slate-800/50 rounded-2xl p-5 border border-white/10 text-center">
+       <div class="text-3xl mb-3">🛕</div>
+       <div class="font-semibold text-sm">Varanasi</div>
+       <div class="text-xs text-gray-500 mt-1">Spiritual City</div>
+      </div>
+      <div class="city-card bg-slate-800/50 rounded-2xl p-5 border border-white/10 text-center">
+       <div class="text-3xl mb-3">🏙️</div>
+       <div class="font-semibold text-sm">Gorakhpur</div>
+       <div class="text-xs text-gray-500 mt-1">East UP</div>
+      </div>
+      <div class="city-card bg-slate-800/50 rounded-2xl p-5 border border-white/10 text-center">
+       <div class="text-3xl mb-3">🏛️</div>
+       <div class="font-semibold text-sm">Agra</div>
+       <div class="text-xs text-gray-500 mt-1">Tourism City</div>
+      </div>
+      <div class="city-card bg-slate-800/50 rounded-2xl p-5 border border-white/10 text-center">
+       <div class="text-3xl mb-3">🏙️</div>
+       <div class="font-semibold text-sm">Meerut</div>
+       <div class="text-xs text-gray-500 mt-1">West UP</div>
+      </div>
+      <div class="city-card bg-slate-800/50 rounded-2xl p-5 border border-white/10 text-center">
+       <div class="text-3xl mb-3">🏙️</div>
+       <div class="font-semibold text-sm">Ghaziabad</div>
+       <div class="text-xs text-gray-500 mt-1">NCR Region</div>
+      </div>
+      <div class="city-card bg-slate-800/50 rounded-2xl p-5 border border-white/10 text-center">
+       <div class="text-3xl mb-3">💻</div>
+       <div class="font-semibold text-sm">Noida</div>
+       <div class="text-xs text-gray-500 mt-1">NCR Region</div>
+      </div>
+      <div class="city-card bg-slate-800/50 rounded-2xl p-5 border border-white/10 text-center">
+       <div class="text-3xl mb-3">🏙️</div>
+       <div class="font-semibold text-sm">Jhansi</div>
+       <div class="text-xs text-gray-500 mt-1">Bundelkhand</div>
+      </div>
+      <div class="city-card bg-slate-800/50 rounded-2xl p-5 border border-white/10 text-center">
+       <div class="text-3xl mb-3">🏙️</div>
+       <div class="font-semibold text-sm">Bareilly</div>
+       <div class="text-xs text-gray-500 mt-1">North UP</div>
+      </div>
+      <div class="city-card bg-slate-800/50 rounded-2xl p-5 border border-white/10 text-center">
+       <div class="text-3xl mb-3">🕌</div>
+       <div class="font-semibold text-sm">Mathura</div>
+       <div class="text-xs text-gray-500 mt-1">Braj Region</div>
+      </div>
+     </div>
+     <p id="area-note" class="text-center text-gray-500 text-sm mt-8">Not in the list? <a href="#contact" class="text-orange-400 hover:text-orange-300 underline">Contact us</a> — we serve all of Uttar Pradesh.</p>
+    </div>
+   </section>
+
+   <!-- Refer-a-Friend Section -->
+   <section id="refer" class="py-20 md:py-28 relative">
+    <div class="section-divider w-full mb-20"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="max-w-4xl mx-auto">
+      <div class="bg-gradient-to-br from-orange-500/10 to-yellow-500/5 rounded-3xl border border-orange-500/20 p-8 md:p-12 text-center">
+       <div class="text-5xl mb-5">🤝</div>
+       <span id="refer-badge" class="text-orange-400 text-sm font-semibold tracking-widest uppercase">Referral Program</span>
+       <h2 id="refer-title" class="text-3xl md:text-4xl font-bold font-space mt-4 mb-4">Refer & <span class="gradient-text">Earn ₹2,000</span></h2>
+       <p id="refer-subtitle" class="text-gray-300 text-lg max-w-2xl mx-auto mb-10">Know someone who wants to go solar? Refer them to us. When they install, you earn ₹2,000 off your next service — and they get ₹1,000 off their installation!</p>
+       <div class="grid md:grid-cols-3 gap-6 mb-10 text-left">
+        <div class="bg-slate-800/60 rounded-2xl p-6 border border-white/10">
+         <div class="text-3xl mb-3">1️⃣</div>
+         <h4 id="refer-step1-title" class="font-bold mb-2">Share the Link</h4>
+         <p id="refer-step1-desc" class="text-sm text-gray-400">Send your friend our website or WhatsApp number and mention your name as referral</p>
+        </div>
+        <div class="bg-slate-800/60 rounded-2xl p-6 border border-white/10">
+         <div class="text-3xl mb-3">2️⃣</div>
+         <h4 id="refer-step2-title" class="font-bold mb-2">Friend Installs</h4>
+         <p id="refer-step2-desc" class="text-sm text-gray-400">Your referral books with us and gets ₹1,000 discount on their solar installation</p>
+        </div>
+        <div class="bg-slate-800/60 rounded-2xl p-6 border border-white/10">
+         <div class="text-3xl mb-3">3️⃣</div>
+         <h4 id="refer-step3-title" class="font-bold mb-2">You Earn ₹2,000</h4>
+         <p id="refer-step3-desc" class="text-sm text-gray-400">You receive ₹2,000 discount on your next service, AMC renewal, or installation</p>
+        </div>
+       </div>
+       <a href="https://wa.me/919628275110?text=Hi%2C%20I%20want%20to%20refer%20a%20friend%20for%20solar%20installation.%20My%20name%20is%3A%20" target="_blank" rel="noopener" class="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-full text-lg font-semibold">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/></svg>
+        <span id="refer-cta">Refer via WhatsApp</span>
+       </a>
+       <p id="refer-terms" class="text-xs text-gray-500 mt-4">*Discount applied on confirmed installation or service booking. One referral reward per customer per month.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Footer -->
    <footer class="py-12 border-t border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="grid md:grid-cols-4 gap-8 mb-10">
@@ -1042,10 +1225,37 @@
      </div>
     </div>
    </footer>
+   <!-- Floating Call Button (desktop only) -->
+   <a href="tel:+919628275110" class="call-btn" aria-label="Call Us">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+   </a>
    <!-- WhatsApp Floating Button -->
    <a href="https://wa.me/919628275110?text=Hi%2C%20I%20am%20interested%20in%20solar%20installation.%20Please%20share%20details." target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Chat on WhatsApp">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
    </a>
+   <!--
+     ╔══════════════════════════════════════════════════════════════════╗
+     ║  TAWK.TO LIVE CHAT — FREE SETUP (3 minutes)                     ║
+     ║  1. Go to https://www.tawk.to and create a free account         ║
+     ║  2. Add a new property for shuklasolarsolutions.in              ║
+     ║  3. Copy your Property ID (looks like: 64abc123def456/1234abcd) ║
+     ║  4. Replace PASTE_YOUR_PROPERTY_ID below with it               ║
+     ║  5. Remove the HTML comment tags around the script              ║
+     ╚══════════════════════════════════════════════════════════════════╝
+   -->
+<!--Start of Tawk.to Script-->
+<!-- <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/69c27cd0fb40191c3834a04c/1jkfrf4g5';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+End of Tawk.to Script -->
    <!-- Sticky Mobile CTA -->
    <div class="sticky-cta">
     <a href="tel:+919628275110" class="flex-1 bg-slate-700 text-white text-center py-3 rounded-xl font-semibold text-sm">📞 Call Now</a>
@@ -1248,6 +1458,19 @@ if (slider) {
     document.getElementById("payback-period").textContent = payback + " yrs";
     document.getElementById("system-size").textContent = kw + " kW";
     document.getElementById("system-cost").textContent = fmt(systemCost);
+    // EMI calculation at 7.5% p.a.
+    function calcEMI(P, years) {
+      if (P <= 0) return 0;
+      var r = 7.5 / 12 / 100;
+      var n = years * 12;
+      return Math.round(P * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1));
+    }
+    var emiEl3 = document.getElementById("emi-3yr");
+    var emiEl5 = document.getElementById("emi-5yr");
+    var emiEl7 = document.getElementById("emi-7yr");
+    if (emiEl3) emiEl3.textContent = fmt(calcEMI(systemCost, 3)) + "/mo";
+    if (emiEl5) emiEl5.textContent = fmt(calcEMI(systemCost, 5)) + "/mo";
+    if (emiEl7) emiEl7.textContent = fmt(calcEMI(systemCost, 7)) + "/mo";
   }
   slider.addEventListener("input", function() { updateCalculator(parseInt(this.value)); });
   updateCalculator(3000);
@@ -1348,6 +1571,307 @@ document.querySelectorAll(".faq-toggle").forEach(function(btn) {
 });
 
 });
+</script>
+<script>
+// ─── LANGUAGE TOGGLE SYSTEM ───────────────────────────────────────────────────
+var currentLang = 'en';
+
+var langData = [
+  // NAV
+  {s:'a[href="#home"]',         en:'Home',            hi:'होम'},
+  {s:'a[href="#about"]',        en:'About',           hi:'हमारे बारे में'},
+  {s:'a[href="#book-service"]', en:'Book Service',    hi:'सर्विस बुक करें'},
+  {s:'a[href="#benefits"]',     en:'Benefits',        hi:'फ़ायदे'},
+  {s:'a[href="#faq"].nav-link, #mobile-menu a[href="#faq"]', en:'FAQ', hi:'सवाल-जवाब'},
+  {s:'a[href="#contact"].nav-link, #mobile-menu a[href="#contact"]', en:'Contact', hi:'संपर्क'},
+  {s:'a[href="#contact"].btn-primary', en:'Get Free Quote', hi:'मुफ़्त कोटेशन लें'},
+  {s:'#home .inline-flex span.text-orange-400', en:'Leading Solar Provider', hi:'अग्रणी सोलर कंपनी'},
+
+  // HERO
+  {s:'#hero-title', t:'html',
+    en:'Power Your Home with <span class="gradient-text"> Clean Solar Energy</span>',
+    hi:'अपने घर को करें <span class="gradient-text">सौर ऊर्जा</span> से रोशन'},
+  {s:'#hero-subtitle',
+    en:'Transform your rooftop into a powerhouse. Save up to 90% on electricity bills with our premium solar solutions.',
+    hi:'अपनी छत को बनाएं एक पावरहाउस। हमारे प्रीमियम सोलर समाधान से बिजली बिल में बचाएं 90% तक।'},
+  {s:'#home a[href="#contact"] span:first-child', en:'Get Free Consultation', hi:'मुफ़्त सलाह लें'},
+  {s:'#home a[href="#services"] span',            en:'Our Services',          hi:'हमारी सेवाएं'},
+  {s:'#home .grid.grid-cols-3 > div:nth-child(1) .text-xs', en:'Installations',      hi:'इंस्टालेशन'},
+  {s:'#home .grid.grid-cols-3 > div:nth-child(2) .text-xs', en:'Capacity Installed',  hi:'क्षमता स्थापित'},
+  {s:'#home .grid.grid-cols-3 > div:nth-child(3) .text-xs', en:'Happy Clients',       hi:'खुश ग्राहक'},
+
+  // ABOUT
+  {s:'#about-title', t:'html',
+    en:'Your Trusted Partner in <span class="gradient-text">Solar Energy</span>',
+    hi:'सौर ऊर्जा में <span class="gradient-text">आपका विश्वसनीय साथी</span>'},
+  {s:'#about-description',
+    en:'Shukla Solar Solutions is a premier rooftop solar installation company committed to making clean energy accessible for every home and business. With years of expertise and hundreds of successful installations, we deliver reliable, efficient, and affordable solar solutions.',
+    hi:'शुक्ला सोलर सॉल्यूशंस एक प्रमुख रूफटॉप सोलर इंस्टालेशन कंपनी है जो हर घर और व्यवसाय तक स्वच्छ ऊर्जा पहुँचाने के लिए प्रतिबद्ध है। वर्षों के अनुभव और सैकड़ों सफल इंस्टालेशन के साथ, हम विश्वसनीय, कुशल और किफायती सोलर समाधान प्रदान करते हैं।'},
+  {s:'#about .grid.grid-cols-2 > div:nth-child(1) p.text-sm', en:'Government certified vendor',     hi:'सरकार द्वारा प्रमाणित'},
+  {s:'#about .grid.grid-cols-2 > div:nth-child(2) h4',        en:'25 Year Warranty',                hi:'25 साल की वारंटी'},
+  {s:'#about .grid.grid-cols-2 > div:nth-child(2) p.text-sm', en:'Long-term performance guarantee', hi:'दीर्घकालिक प्रदर्शन गारंटी'},
+  {s:'#about .grid.grid-cols-2 > div:nth-child(4) h4',        en:'Easy EMI',                        hi:'आसान EMI'},
+  {s:'#about .grid.grid-cols-2 > div:nth-child(4) p.text-sm', en:'Flexible payment options',        hi:'लचीले भुगतान विकल्प'},
+
+  // SERVICES
+  {s:'#services .text-center > span',   en:'Our Services',   hi:'हमारी सेवाएं'},
+  {s:'#services .text-center h2', t:'html',
+    en:'Complete <span class="gradient-text">Solar Solutions</span>',
+    hi:'संपूर्ण <span class="gradient-text">सोलर समाधान</span>'},
+  {s:'#services .text-center p',
+    en:'From consultation to installation and maintenance, we provide end-to-end solar services',
+    hi:'परामर्श से लेकर इंस्टालेशन और रखरखाव तक, हम पूर्ण सोलर सेवाएं प्रदान करते हैं'},
+  {s:'#services .grid > div:nth-child(1) h3', en:'Residential Solar',     hi:'घरेलू सोलर'},
+  {s:'#services .grid > div:nth-child(1) > p', en:'Power your home with rooftop solar systems ranging from 1kW to 10kW. Perfect for reducing your electricity bills.',      hi:'1kW से 10kW तक के रूफटॉप सोलर सिस्टम से अपने घर को बिजली दें। बिजली बिल कम करने का बेहतरीन समाधान।'},
+  {s:'#services .grid > div:nth-child(2) h3', en:'Commercial Solar',      hi:'व्यावसायिक सोलर'},
+  {s:'#services .grid > div:nth-child(2) > p', en:'Large-scale solar solutions for businesses, industries, and institutions. Reduce operational costs significantly.',     hi:'व्यवसायों, उद्योगों और संस्थाओं के लिए बड़े पैमाने पर सोलर समाधान। परिचालन लागत में भारी बचत करें।'},
+  {s:'#services .grid > div:nth-child(3) h3', en:'Government Subsidy',    hi:'सरकारी सब्सिडी'},
+  {s:'#services .grid > div:nth-child(3) > p', en:'We help you avail subsidies under PM Surya Ghar Yojana and state government schemes. Save up to 40%!',                hi:'PM सूर्य घर योजना और राज्य सरकार की योजनाओं के तहत सब्सिडी दिलाने में हम आपकी मदद करते हैं। 40% तक बचाएं!'},
+  {s:'#services .grid > div:nth-child(4) h3', en:'Solar with Battery',    hi:'बैटरी के साथ सोलर'},
+  {s:'#services .grid > div:nth-child(4) > p', en:'Hybrid solar systems with battery backup for uninterrupted power supply even during grid failures.',                   hi:'ग्रिड फेलियर के दौरान भी निर्बाध बिजली आपूर्ति के लिए बैटरी बैकअप वाले हाइब्रिड सोलर सिस्टम।'},
+  {s:'#services .grid > div:nth-child(5) h3', en:'AMC & Maintenance',     hi:'AMC और रखरखाव'},
+  {s:'#services .grid > div:nth-child(5) > p', en:'Annual maintenance contracts to keep your solar system running at peak efficiency year after year.',                   hi:'आपके सोलर सिस्टम को साल भर अधिकतम दक्षता पर चलाए रखने के लिए वार्षिक रखरखाव अनुबंध।'},
+  {s:'#services .grid > div:nth-child(6) h3', en:'Consultation & Design', hi:'परामर्श और डिज़ाइन'},
+  {s:'#services .grid > div:nth-child(6) > p', en:'Free site survey and custom system design based on your energy consumption and roof specifications.',                  hi:'आपकी ऊर्जा खपत और छत की विशिष्टताओं के आधार पर मुफ़्त साइट सर्वे और कस्टम सिस्टम डिज़ाइन।'},
+
+  // BOOK SERVICE
+  {s:'#book-service .text-center > span', en:'Solar Plant Servicing',  hi:'सोलर प्लांट सर्विसिंग'},
+  {s:'#book-service .text-center h2', t:'html',
+    en:'Book a <span class="gradient-text">Service Visit</span>',
+    hi:'बुक करें <span class="gradient-text">सर्विस विज़िट</span>'},
+  {s:'#book-service .text-center > p',
+    en:'Already have a solar plant? Keep it running at peak efficiency with our expert servicing team',
+    hi:'क्या आपके पास सोलर प्लांट है? हमारी विशेषज्ञ टीम से उसे अधिकतम दक्षता पर चलाते रहें'},
+  {s:'#book-service .grid > div:nth-child(1) h3',       en:'Panel Cleaning',           hi:'पैनल सफ़ाई'},
+  {s:'#book-service .grid > div:nth-child(1) > p',      en:'Remove dust & bird droppings, restore panel output efficiency', hi:'धूल और पक्षियों की गंदगी हटाएं, पैनल की दक्षता वापस पाएं'},
+  {s:'#book-service .grid > div:nth-child(1) .text-xs', en:'Per visit',                 hi:'प्रति विज़िट'},
+  {s:'#book-service .grid > div:nth-child(2) h3',       en:'Performance Check',         hi:'परफॉर्मेंस जाँच'},
+  {s:'#book-service .grid > div:nth-child(2) > p',      en:'Inverter test, output analysis & wiring inspection', hi:'इन्वर्टर परीक्षण, आउटपुट विश्लेषण और वायरिंग जाँच'},
+  {s:'#book-service .grid > div:nth-child(2) .text-xs', en:'Per visit',                 hi:'प्रति विज़िट'},
+  {s:'#book-service .grid > div:nth-child(3) h3',       en:'Complete Health Audit',     hi:'पूर्ण स्वास्थ्य ऑडिट'},
+  {s:'#book-service .grid > div:nth-child(3) > p',      en:'Full system audit with detailed performance report', hi:'पूरे सिस्टम की जाँच और विस्तृत परफॉर्मेंस रिपोर्ट'},
+  {s:'#book-service .grid > div:nth-child(3) .text-xs', en:'Per visit',                 hi:'प्रति विज़िट'},
+  {s:'#book-service .grid > div:nth-child(3) .absolute.-top-3', en:'Most Popular',      hi:'सबसे लोकप्रिय'},
+  {s:'#book-service .grid > div:nth-child(4) h3',       en:'Annual AMC',                hi:'वार्षिक AMC'},
+  {s:'#book-service .grid > div:nth-child(4) > p',      en:'4 visits/year, priority support, all parts included', hi:'4 विज़िट/वर्ष, प्राथमिकता सहायता, सभी पुर्जे शामिल'},
+  {s:'#book-service .grid > div:nth-child(4) .text-xs', en:'Residential',               hi:'घरेलू'},
+  {s:'#book-service .max-w-3xl > h3',    en:'Book Your Service Slot',   hi:'अपना सर्विस स्लॉट बुक करें'},
+  {s:'#book-service .max-w-3xl > p',     en:"We'll confirm your booking within 2 hours via call or WhatsApp", hi:'हम 2 घंटे में कॉल या WhatsApp से बुकिंग कन्फर्म करेंगे'},
+  {s:'label[for="svc-name"]',            en:'Full Name *',               hi:'पूरा नाम *'},
+  {s:'label[for="svc-phone"]',           en:'Phone Number *',            hi:'फ़ोन नंबर *'},
+  {s:'label[for="svc-email"]',           en:'Email Address',             hi:'ईमेल पता'},
+  {s:'label[for="svc-city"]',            en:'City / Area *',             hi:'शहर / क्षेत्र *'},
+  {s:'label[for="svc-size"]',            en:'System Size *',             hi:'सिस्टम का आकार *'},
+  {s:'label[for="svc-age"]',             en:'System Age *',              hi:'सिस्टम की उम्र *'},
+  {s:'label[for="svc-date"]',            en:'Preferred Date *',          hi:'पसंदीदा तारीख *'},
+  {s:'label[for="svc-slot"]',            en:'Preferred Time Slot *',     hi:'पसंदीदा समय *'},
+  {s:'label[for="svc-issue"]',           en:'Issue Description (Optional)', hi:'समस्या का विवरण (वैकल्पिक)'},
+  {s:'#service-form button[type="submit"] span', en:'Confirm Service Booking', hi:'सर्विस बुकिंग कन्फर्म करें'},
+  {s:'#service-form ~ p',                en:'Our team confirms your slot within 2 hours via call / WhatsApp', hi:'हमारी टीम 2 घंटे में कॉल / WhatsApp से स्लॉट कन्फर्म करेगी'},
+  {s:'#service-success h3',             en:'Booking Received!',          hi:'बुकिंग मिल गई!'},
+  {s:'#service-success p',              en:'Our team will confirm your service slot within 2 hours via call or WhatsApp.', hi:'हमारी टीम 2 घंटे में कॉल या WhatsApp से सर्विस स्लॉट कन्फर्म करेगी।'},
+  {s:'#book-another',                   en:'Book Another Service',        hi:'एक और सर्विस बुक करें'},
+  {s:'#clear-pkg',                       en:'Change',                    hi:'बदलें'},
+  // select options
+  {s:'#svc-size option:nth-child(1)', en:'Select system size',           hi:'सिस्टम का आकार चुनें'},
+  {s:'#svc-size option:nth-child(2)', en:'1 \u2013 3 kW (Residential)',  hi:'1 \u2013 3 kW (घरेलू)'},
+  {s:'#svc-size option:nth-child(3)', en:'3 \u2013 5 kW (Residential)',  hi:'3 \u2013 5 kW (घरेलू)'},
+  {s:'#svc-size option:nth-child(4)', en:'5 \u2013 10 kW (Large Home)',  hi:'5 \u2013 10 kW (बड़ा घर)'},
+  {s:'#svc-size option:nth-child(5)', en:'10 \u2013 50 kW (Commercial)', hi:'10 \u2013 50 kW (व्यवसाय)'},
+  {s:'#svc-size option:nth-child(6)', en:'50 kW+ (Industrial)',          hi:'50 kW+ (औद्योगिक)'},
+  {s:'#svc-age option:nth-child(1)',  en:'How old is your system?',       hi:'आपका सिस्टम कितना पुराना है?'},
+  {s:'#svc-age option:nth-child(2)',  en:'Under 1 year',                  hi:'1 साल से कम'},
+  {s:'#svc-age option:nth-child(3)',  en:'1 \u2013 3 years',              hi:'1 \u2013 3 साल'},
+  {s:'#svc-age option:nth-child(4)',  en:'3 \u2013 5 years',              hi:'3 \u2013 5 साल'},
+  {s:'#svc-age option:nth-child(5)',  en:'5+ years',                      hi:'5+ साल'},
+  {s:'#svc-slot option:nth-child(1)', en:'Select time slot',              hi:'समय चुनें'},
+  {s:'#svc-slot option:nth-child(2)', en:'Morning (9am \u2013 12pm)',     hi:'सुबह (9am \u2013 12pm)'},
+  {s:'#svc-slot option:nth-child(3)', en:'Afternoon (12pm \u2013 4pm)',   hi:'दोपहर (12pm \u2013 4pm)'},
+  {s:'#svc-slot option:nth-child(4)', en:'Evening (4pm \u2013 6pm)',      hi:'शाम (4pm \u2013 6pm)'},
+  // placeholders
+  {s:'#svc-name',  t:'placeholder', en:'Your name',          hi:'आपका नाम'},
+  {s:'#svc-phone', t:'placeholder', en:'+91 XXXXX XXXXX',    hi:'+91 XXXXX XXXXX'},
+  {s:'#svc-email', t:'placeholder', en:'your@email.com',     hi:'aapka@email.com'},
+  {s:'#svc-city',  t:'placeholder', en:'Your city or area',  hi:'आपका शहर या क्षेत्र'},
+  {s:'#svc-issue', t:'placeholder',
+    en:'e.g. panels not cleaned in 6 months, inverter showing error, output seems low...',
+    hi:'जैसे: 6 महीने से पैनल साफ नहीं हुआ, इन्वर्टर में एरर आ रही है, आउटपुट कम लग रहा है...'},
+
+  // BENEFITS
+  {s:'#benefits .text-center > span', en:'Why Go Solar?', hi:'सोलर क्यों लगवाएं?'},
+  {s:'#benefits .text-center h2', t:'html',
+    en:'Benefits of <span class="gradient-text">Solar Energy</span>',
+    hi:'सौर ऊर्जा के <span class="gradient-text">फ़ायदे</span>'},
+  {s:'#benefits .grid > div:nth-child(1) h3', en:'Save Money',       hi:'पैसे बचाएं'},
+  {s:'#benefits .grid > div:nth-child(1) p',  en:'Reduce electricity bills by up to 90% and earn from excess power', hi:'बिजली बिल 90% तक कम करें और अतिरिक्त बिजली से कमाई भी करें'},
+  {s:'#benefits .grid > div:nth-child(2) h3', en:'Go Green',         hi:'पर्यावरण बचाएं'},
+  {s:'#benefits .grid > div:nth-child(2) p',  en:'Reduce carbon footprint and contribute to a cleaner environment',  hi:'कार्बन फुटप्रिंट कम करें और स्वच्छ पर्यावरण में योगदान दें'},
+  {s:'#benefits .grid > div:nth-child(3) h3', en:'Increase Value',   hi:'संपत्ति का मूल्य बढ़ाएं'},
+  {s:'#benefits .grid > div:nth-child(3) p',  en:'Solar installations increase your property value significantly',   hi:'सोलर इंस्टालेशन से आपकी संपत्ति का मूल्य काफी बढ़ जाता है'},
+  {s:'#benefits .grid > div:nth-child(4) h3', en:'Energy Security',  hi:'ऊर्जा सुरक्षा'},
+  {s:'#benefits .grid > div:nth-child(4) p',  en:'Reduce dependence on grid power and rising electricity costs',     hi:'ग्रिड बिजली और बढ़ती बिजली की दरों पर निर्भरता कम करें'},
+
+  // CALCULATOR
+  {s:'#calculator .text-center > span', en:'Savings Calculator', hi:'बचत कैलकुलेटर'},
+  {s:'#calculator .text-center h2', t:'html',
+    en:'Calculate Your <span class="gradient-text">Solar Savings</span>',
+    hi:'जानें अपनी <span class="gradient-text">सोलर बचत</span>'},
+  {s:'#calculator .text-center > p',
+    en:'Drag the slider to see your estimated savings and recommended system size',
+    hi:'स्लाइडर खींचें और अपनी अनुमानित बचत और अनुशंसित सिस्टम देखें'},
+  {s:'#calculator label',                    en:'Monthly Electricity Bill',   hi:'मासिक बिजली बिल'},
+  {s:'#monthly-savings + div',               en:'Monthly Savings',            hi:'मासिक बचत'},
+  {s:'#yearly-savings + div',                en:'Yearly Savings',             hi:'वार्षिक बचत'},
+  {s:'#payback-period + div',                en:'Payback Period',             hi:'पेबैक अवधि'},
+  {s:'#calculator .bg-green-500\\/10 h4',
+    en:'\uD83C\uDFDB\uFE0F PM Surya Ghar Muft Bijli Yojana \u2014 Govt. Subsidy',
+    hi:'\uD83C\uDFDB\uFE0F PM सूर्य घर मुफ़्त बिजली योजना \u2014 सरकारी सब्सिडी'},
+  {s:'#calculator .bg-green-500\\/10 p.text-xs',
+    en:'* Subsidy directly credited to your bank account by the government. We handle all paperwork for free.',
+    hi:'* सब्सिडी सीधे आपके बैंक खाते में आएगी। सारी कागज़ी कार्रवाई हमारे ज़िम्मे।'},
+
+  // TESTIMONIALS — quotes kept in English per user request
+  {s:'#testimonials .text-center > span', en:'Customer Reviews',      hi:'ग्राहक समीक्षाएं'},
+  {s:'#testimonials .text-center h2', t:'html',
+    en:'What Our <span class="gradient-text">Customers Say</span>',
+    hi:'हमारे <span class="gradient-text">ग्राहक क्या कहते हैं</span>'},
+  {s:'#testimonials .text-center > p', en:'Real stories from real solar customers across India', hi:'पूरे भारत के असली सोलर ग्राहकों की असली कहानियां'},
+
+  // PROCESS
+  {s:'#process .text-center > span', en:'How It Works',    hi:'यह कैसे काम करता है'},
+  {s:'#process .text-center h2', t:'html',
+    en:'Simple <span class="gradient-text">4-Step Process</span>',
+    hi:'सरल <span class="gradient-text">4 चरणों की प्रक्रिया</span>'},
+  {s:'#process .grid > div:nth-child(1) h3', en:'Consultation', hi:'परामर्श'},
+  {s:'#process .grid > div:nth-child(1) p',  en:'Free consultation to understand your requirements and answer all queries', hi:'आपकी ज़रूरतें समझने और सभी सवालों के जवाब देने के लिए मुफ़्त परामर्श'},
+  {s:'#process .grid > div:nth-child(2) h3', en:'Site Survey',  hi:'साइट सर्वे'},
+  {s:'#process .grid > div:nth-child(2) p',  en:'Our experts visit your site to assess roof condition and design the optimal system', hi:'हमारे विशेषज्ञ आपकी साइट पर आकर छत का आकलन करते हैं और सर्वोत्तम सिस्टम डिज़ाइन करते हैं'},
+  {s:'#process .grid > div:nth-child(3) h3', en:'Installation', hi:'इंस्टालेशन'},
+  {s:'#process .grid > div:nth-child(3) p',  en:'Professional installation by trained technicians within 2-3 days', hi:'प्रशिक्षित तकनीशियनों द्वारा 2-3 दिनों में पेशेवर इंस्टालेशन'},
+  {s:'#process .grid > div:nth-child(4) h3', en:'Power On',     hi:'बिजली शुरू'},
+  {s:'#process .grid > div:nth-child(4) p',  en:'Net metering setup and commissioning. Start generating clean energy!', hi:'नेट मीटरिंग सेटअप और कमीशनिंग। स्वच्छ ऊर्जा उत्पन्न करना शुरू करें!'},
+
+  // CONTACT
+  {s:'#contact .grid > div:first-child > span', en:'Contact Us',  hi:'संपर्क करें'},
+  {s:'#contact h2', t:'html',
+    en:'Get Your <span class="gradient-text">Free Quote</span>',
+    hi:'पाएं अपना <span class="gradient-text">मुफ़्त कोटेशन</span>'},
+  {s:'#contact .grid > div:first-child > p',
+    en:'Ready to switch to solar? Fill out the form and our team will get back to you within 24 hours with a customized proposal.',
+    hi:'सोलर पर स्विच करने के लिए तैयार हैं? फ़ॉर्म भरें और हमारी टीम 24 घंटे में अनुकूलित प्रस्ताव भेजेगी।'},
+  {s:'label[for="name"]',    en:'Full Name',                        hi:'पूरा नाम'},
+  {s:'label[for="phone"]',   en:'Phone Number',                     hi:'फ़ोन नंबर'},
+  {s:'label[for="email"]',   en:'Email Address',                    hi:'ईमेल पता'},
+  {s:'label[for="city"]',    en:'City',                             hi:'शहर'},
+  {s:'label[for="bill"]',    en:'Average Monthly Electricity Bill', hi:'मासिक बिजली बिल'},
+  {s:'label[for="message"]', en:'Message (Optional)',               hi:'संदेश (वैकल्पिक)'},
+  {s:'#contact-form button[type="submit"] span', en:'Get Free Quote', hi:'मुफ़्त कोटेशन लें'},
+  {s:'#success-message h3',  en:'Thank You!',                       hi:'धन्यवाद!'},
+  {s:'#success-message p',   en:"We've received your inquiry. Our team will contact you within 24 hours.", hi:'आपकी जानकारी मिल गई। हमारी टीम 24 घंटे में संपर्क करेगी।'},
+  {s:'#name',     t:'placeholder', en:'Enter your name',            hi:'अपना नाम लिखें'},
+  {s:'#phone',    t:'placeholder', en:'+91 XXXXX XXXXX',            hi:'+91 XXXXX XXXXX'},
+  {s:'#email',    t:'placeholder', en:'your@email.com',             hi:'aapka@email.com'},
+  {s:'#city',     t:'placeholder', en:'Your city',                  hi:'आपका शहर'},
+  {s:'#message',  t:'placeholder', en:'Any specific requirements...', hi:'कोई विशेष आवश्यकता...'},
+  {s:'#bill option:nth-child(1)', en:'Select your bill range',      hi:'बिल रेंज चुनें'},
+
+  // FAQ
+  {s:'#faq .text-center > span', en:'FAQ', hi:'सामान्य प्रश्न'},
+  {s:'#faq .text-center h2', t:'html',
+    en:'Frequently Asked <span class="gradient-text">Questions</span>',
+    hi:'अक्सर पूछे जाने वाले <span class="gradient-text">सवाल</span>'},
+  {s:'#faq .faq-item:nth-child(1) .faq-toggle span:first-child', en:'How much does a rooftop solar system cost?', hi:'रूफटॉप सोलर सिस्टम की कीमत कितनी होती है?'},
+  {s:'#faq .faq-item:nth-child(1) .faq-answer p', en:'A 1 kW system costs approximately \u20B960,000\u2013\u20B975,000 before subsidy. With the PM Surya Ghar Muft Bijli Yojana subsidy (up to \u20B978,000 for 3+ kW systems), your effective cost is significantly lower. We provide detailed quotes after a free site survey.', hi:'1 kW सिस्टम की कीमत सब्सिडी से पहले लगभग ₹60,000–₹75,000 होती है। PM सूर्य घर मुफ़्त बिजली योजना सब्सिडी (3+ kW पर ₹78,000 तक) के बाद आपका प्रभावी खर्च काफी कम हो जाता है। मुफ़्त साइट सर्वे के बाद हम विस्तृत कोटेशन देते हैं।'},
+  {s:'#faq .faq-item:nth-child(2) .faq-toggle span:first-child', en:'How long does installation take?', hi:'इंस्टालेशन में कितना समय लगता है?'},
+  {s:'#faq .faq-item:nth-child(2) .faq-answer p', en:'Typically 2\u20133 days for residential systems. This includes mounting, wiring, inverter installation, and commissioning. Net metering approval from DISCOM may take an additional 2\u20134 weeks, which we handle for you.', hi:'घरेलू सिस्टम के लिए आमतौर पर 2–3 दिन लगते हैं। इसमें माउंटिंग, वायरिंग, इन्वर्टर इंस्टालेशन और कमीशनिंग शामिल है। DISCOM से नेट मीटरिंग अनुमोदन में 2–4 सप्ताह और लग सकते हैं — जो हम आपके लिए संभालते हैं।'},
+  {s:'#faq .faq-item:nth-child(3) .faq-toggle span:first-child', en:'What is the payback period?', hi:'पेबैक अवधि कितनी होती है?'},
+  {s:'#faq .faq-item:nth-child(3) .faq-answer p', en:"With current electricity rates and government subsidies, most residential systems pay for themselves in 3\u20134 years. After that, you enjoy free electricity for the remaining 21+ years of the panel's 25-year warranty period.", hi:'वर्तमान बिजली दरों और सरकारी सब्सिडी के साथ, अधिकांश घरेलू सिस्टम 3–4 वर्षों में अपनी लागत वापस कर देते हैं। उसके बाद पैनल की 25 साल की वारंटी में 21+ साल की मुफ़्त बिजली मिलती है।'},
+  {s:'#faq .faq-item:nth-child(4) .faq-toggle span:first-child', en:'What happens on cloudy days or at night?', hi:'बादल वाले दिनों या रात में क्या होता है?'},
+  {s:'#faq .faq-item:nth-child(4) .faq-answer p', en:'Solar panels still generate electricity on cloudy days at reduced efficiency (15\u201325%). On-grid systems draw from the grid when needed and earn credits when you produce excess. Battery backup systems keep you powered 24/7 even without grid or sun.', hi:'बादल वाले दिनों में भी सोलर पैनल बिजली बनाते हैं, लेकिन कम (15–25%) दक्षता पर। ऑन-ग्रिड सिस्टम ज़रूरत पड़ने पर ग्रिड से लेते हैं और अधिक उत्पादन पर क्रेडिट कमाते हैं। बैटरी बैकअप बिना ग्रिड या धूप के भी 24/7 बिजली देता है।'},
+  {s:'#faq .faq-item:nth-child(5) .faq-toggle span:first-child', en:'Do you handle government subsidy paperwork?', hi:'क्या आप सरकारी सब्सिडी की कागज़ी कार्रवाई संभालते हैं?'},
+  {s:'#faq .faq-item:nth-child(5) .faq-answer p', en:'Yes, absolutely! We handle all documentation for PM Surya Ghar Muft Bijli Yojana subsidies, UPNEDA registration, net metering applications, and DISCOM approvals at no extra charge. The subsidy is directly credited to your bank account.', hi:'हाँ, बिल्कुल! PM सूर्य घर मुफ़्त बिजली योजना सब्सिडी, UPNEDA पंजीकरण, नेट मीटरिंग आवेदन और DISCOM अनुमोदन की पूरी कागज़ी कार्रवाई हम बिना किसी अतिरिक्त शुल्क के संभालते हैं। सब्सिडी सीधे आपके बैंक खाते में आती है।'},
+  {s:'#faq .faq-item:nth-child(6) .faq-toggle span:first-child', en:'What warranty do you offer?', hi:'आप क्या वारंटी देते हैं?'},
+  {s:'#faq .faq-item:nth-child(6) .faq-answer p', en:'We offer 25-year performance warranty on solar panels, 5-year warranty on inverters, and 1-year workmanship warranty on installation. Annual Maintenance Contracts (AMC) are also available for long-term system performance and peace of mind.', hi:'हम सोलर पैनल पर 25 साल की परफॉर्मेंस वारंटी, इन्वर्टर पर 5 साल की वारंटी और इंस्टालेशन पर 1 साल की कारीगरी वारंटी देते हैं। दीर्घकालिक सिस्टम प्रदर्शन के लिए वार्षिक रखरखाव अनुबंध (AMC) भी उपलब्ध हैं।'},
+
+  // FOOTER
+  {s:'footer p.text-xs',
+    en:'Powering Tomorrow, Today',
+    hi:'कल की ताकत, आज'},
+  {s:'footer .text-gray-400.text-sm',
+    en:'Your trusted partner for rooftop solar installations. Making clean energy accessible for every home and business across India.',
+    hi:'रूफटॉप सोलर इंस्टालेशन के लिए आपका विश्वसनीय साथी। पूरे भारत में हर घर और व्यवसाय तक स्वच्छ ऊर्जा पहुँचाना हमारा लक्ष्य है।'},
+  {s:'footer .text-sm.text-gray-500',
+    en:'\u00A9 2026 Shukla Solar Solutions. All rights reserved.',
+    hi:'\u00A9 2026 Shukla Solar Solutions. सर्वाधिकार सुरक्षित।'},
+
+  // MOBILE STICKY CTA
+  {s:'.sticky-cta a:first-child', en:'\uD83D\uDCDE Call Now',   hi:'\uD83D\uDCDE अभी कॉल करें'},
+  {s:'.sticky-cta a:last-child',  en:'Get Free Quote',          hi:'मुफ़्त कोटेशन लें'},
+
+  // CALCULATOR — EMI section
+  {s:'#emi-heading',   en:'\uD83D\uDCB3 EMI Calculator \u2014 Monthly Payment Estimate', hi:'\uD83D\uDCB3 EMI कैलकुलेटर \u2014 मासिक किस्त अनुमान'},
+  {s:'#emi-subtext',   en:'Based on system cost after subsidy at ~7.5% p.a. (green energy loan rate)', hi:'सब्सिडी के बाद सिस्टम लागत पर ~7.5% प्रति वर्ष (ग्रीन एनर्जी लोन दर) के आधार पर'},
+  {s:'#emi-3yr + div', en:'3 Year Loan',  hi:'3 साल का लोन'},
+  {s:'#emi-5yr + div', en:'5 Year Loan',  hi:'5 साल का लोन'},
+  {s:'#emi-7yr + div', en:'7 Year Loan',  hi:'7 साल का लोन'},
+  {s:'#emi-note',      en:'* Actual EMI depends on lender terms. Many banks offer special green energy loans. Ask us for referrals.', hi:'* वास्तविक EMI ऋणदाता की शर्तों पर निर्भर करती है। कई बैंक विशेष ग्रीन एनर्जी लोन देते हैं। हमसे रेफरल के लिए पूछें।'},
+
+  // SERVICE AREA
+  {s:'#area-badge',    en:'Service Area',   hi:'सेवा क्षेत्र'},
+  {s:'#area-title', t:'html',
+    en:'Cities We <span class="gradient-text">Serve</span>',
+    hi:'हम किन शहरों में <span class="gradient-text">सेवा देते हैं</span>'},
+  {s:'#area-subtitle', en:'Expert solar installations across Uttar Pradesh and nearby regions', hi:'उत्तर प्रदेश और आसपास के क्षेत्रों में विशेषज्ञ सोलर इंस्टालेशन'},
+  {s:'#area-note',  t:'html',
+    en:'Not in the list? <a href="#contact" class="text-orange-400 hover:text-orange-300 underline">Contact us</a> \u2014 we serve all of Uttar Pradesh.',
+    hi:'सूची में नहीं है? <a href="#contact" class="text-orange-400 hover:text-orange-300 underline">संपर्क करें</a> \u2014 हम पूरे उत्तर प्रदेश में सेवा देते हैं।'},
+
+  // REFER-A-FRIEND
+  {s:'#refer-badge',        en:'Referral Program',  hi:'रेफरल प्रोग्राम'},
+  {s:'#refer-title', t:'html',
+    en:'Refer & <span class="gradient-text">Earn \u20B92,000</span>',
+    hi:'रेफर करें और <span class="gradient-text">कमाएं ₹2,000</span>'},
+  {s:'#refer-subtitle',     en:'Know someone who wants to go solar? Refer them to us. When they install, you earn \u20B92,000 off your next service \u2014 and they get \u20B91,000 off their installation!', hi:'कोई जानने वाला सोलर लगवाना चाहता है? उसे हमसे मिलाएं। उनके इंस्टालेशन पर आपको ₹2,000 की छूट मिलेगी — और उन्हें ₹1,000 की!'},
+  {s:'#refer-step1-title',  en:'Share the Link',     hi:'लिंक शेयर करें'},
+  {s:'#refer-step1-desc',   en:'Send your friend our website or WhatsApp number and mention your name as referral', hi:'अपने दोस्त को हमारी वेबसाइट या WhatsApp नंबर भेजें और अपना नाम रेफरल के रूप में बताएं'},
+  {s:'#refer-step2-title',  en:'Friend Installs',    hi:'दोस्त इंस्टालेशन बुक करे'},
+  {s:'#refer-step2-desc',   en:'Your referral books with us and gets \u20B91,000 discount on their solar installation', hi:'आपका रेफरल हमसे बुकिंग करे और उन्हें सोलर इंस्टालेशन पर ₹1,000 की छूट मिले'},
+  {s:'#refer-step3-title',  en:'You Earn \u20B92,000',  hi:'आपको मिले ₹2,000'},
+  {s:'#refer-step3-desc',   en:'You receive \u20B92,000 discount on your next service, AMC renewal, or installation', hi:'आपको अगली सर्विस, AMC नवीनीकरण या इंस्टालेशन पर ₹2,000 की छूट मिलेगी'},
+  {s:'#refer-cta',          en:'Refer via WhatsApp',  hi:'WhatsApp से रेफर करें'},
+  {s:'#refer-terms',        en:'*Discount applied on confirmed installation or service booking. One referral reward per customer per month.', hi:'*छूट कन्फर्म इंस्टालेशन या सर्विस बुकिंग पर लागू। एक ग्राहक को प्रति माह एक रेफरल रिवॉर्ड मिलेगा।'}
+];
+
+function setLang(lang) {
+  langData.forEach(function(item) {
+    try {
+      document.querySelectorAll(item.s).forEach(function(el) {
+        var val = lang === 'hi' ? item.hi : item.en;
+        if (item.t === 'html') el.innerHTML = val;
+        else if (item.t === 'placeholder') el.placeholder = val;
+        else el.textContent = val;
+      });
+    } catch(e) { /* skip bad selectors */ }
+  });
+  currentLang = lang;
+  document.documentElement.lang = lang === 'hi' ? 'hi' : 'en';
+  document.querySelectorAll('#lang-toggle, .lang-btn').forEach(function(btn) {
+    btn.textContent = lang === 'hi' ? 'EN \u2014 English' : '\u0939\u093F \u2014 Hindi';
+  });
+  try { localStorage.setItem('sss_lang', lang); } catch(e) {}
+}
+
+function toggleLang() {
+  setLang(currentLang === 'en' ? 'hi' : 'en');
+}
+
+// Restore on page load
+(function() {
+  try {
+    var saved = localStorage.getItem('sss_lang');
+    if (saved === 'hi') setLang('hi');
+  } catch(e) {}
+})();
 </script>
 </body>
 </html>
