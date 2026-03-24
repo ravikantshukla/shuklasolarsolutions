@@ -179,6 +179,10 @@
       gap: 10px;
     }
     @media (min-width: 768px) { .sticky-cta { display: none !important; } }
+    .pkg-card { transition: all 0.3s ease; }
+    .pkg-card:hover { transform: translateY(-4px); border-color: rgba(249,115,22,0.4) !important; }
+    .pkg-card.selected { border-color: #f97316 !important; background: rgba(249,115,22,0.1) !important; box-shadow: 0 0 30px rgba(249,115,22,0.2); }
+    .pkg-card.selected .pkg-check { display: flex !important; }
   </style>
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -212,7 +216,7 @@
         <p class="text-[10px] md:text-xs text-gray-400 tracking-widest">SOLUTIONS</p>
        </div>
       </div><!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center gap-8"><a href="#home" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Home</a> <a href="#about" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">About</a> <a href="#services" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</a> <a href="#benefits" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Benefits</a> <a href="#calculator" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Calculator</a> <a href="#faq" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">FAQ</a> <a href="#contact" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Contact</a>
+      <div class="hidden md:flex items-center gap-8"><a href="#home" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Home</a> <a href="#about" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">About</a> <a href="#services" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</a> <a href="#book-service" class="nav-link text-sm font-medium text-orange-400 hover:text-orange-300 transition-colors">Book Service</a> <a href="#benefits" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Benefits</a> <a href="#calculator" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Calculator</a> <a href="#faq" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">FAQ</a> <a href="#contact" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Contact</a>
       </div><!-- CTA Button -->
       <div class="hidden md:block"><a href="#contact" class="btn-primary px-6 py-2.5 rounded-full text-sm font-semibold text-white"> Get Free Quote </a>
       </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors">
@@ -221,7 +225,7 @@
      </div>
     </div><!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden hidden bg-slate-900/95 backdrop-blur-lg border-t border-white/10">
-     <div class="px-4 py-4 space-y-3"><a href="#home" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Home</a> <a href="#about" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">About</a> <a href="#services" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Services</a> <a href="#benefits" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Benefits</a> <a href="#calculator" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Calculator</a> <a href="#faq" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">FAQ</a> <a href="#contact" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Contact</a> <a href="#contact" class="btn-primary block text-center py-3 rounded-full text-sm font-semibold mt-4">Get Free Quote</a>
+     <div class="px-4 py-4 space-y-3"><a href="#home" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Home</a> <a href="#about" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">About</a> <a href="#services" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Services</a> <a href="#book-service" class="block py-2 text-orange-400 hover:text-orange-300 transition-colors font-semibold">Book Service</a> <a href="#benefits" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Benefits</a> <a href="#calculator" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Calculator</a> <a href="#faq" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">FAQ</a> <a href="#contact" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Contact</a> <a href="#contact" class="btn-primary block text-center py-3 rounded-full text-sm font-semibold mt-4">Get Free Quote</a>
      </div>
     </div>
    </nav><!-- Hero Section -->
@@ -525,6 +529,115 @@
          <svg class="w-4 h-4 text-orange-400" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
          </svg> ROI calculation</li>
        </ul>
+      </div>
+     </div>
+    </div>
+   </section><!-- Service Booking Section -->
+   <section id="book-service" class="py-20 md:py-32 relative">
+    <div class="section-divider w-full mb-20"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16"><span class="text-orange-400 text-sm font-semibold tracking-widest uppercase">Solar Plant Servicing</span>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 font-space">Book a <span class="gradient-text">Service Visit</span></h2>
+      <p class="text-gray-400 text-lg mt-4 max-w-2xl mx-auto">Already have a solar plant? Keep it running at peak efficiency with our expert servicing team</p>
+     </div>
+     <!-- Service Packages -->
+     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+      <div class="pkg-card relative cursor-pointer bg-slate-800/50 rounded-2xl p-6 border-2 border-white/10 text-center" data-pkg="Panel Cleaning">
+       <div class="pkg-check hidden absolute top-3 right-3 w-6 h-6 bg-orange-500 rounded-full items-center justify-center"><svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+       <div class="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center mx-auto mb-4"><svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"/></svg></div>
+       <h3 class="font-bold text-lg font-space mb-2">Panel Cleaning</h3>
+       <p class="text-gray-400 text-sm mb-4">Remove dust &amp; bird droppings, restore panel output efficiency</p>
+       <div class="text-orange-400 font-bold text-xl font-space">From ₹499</div>
+       <p class="text-xs text-gray-500 mt-1">Per visit</p>
+      </div>
+      <div class="pkg-card relative cursor-pointer bg-slate-800/50 rounded-2xl p-6 border-2 border-white/10 text-center" data-pkg="Performance Check">
+       <div class="pkg-check hidden absolute top-3 right-3 w-6 h-6 bg-orange-500 rounded-full items-center justify-center"><svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+       <div class="w-14 h-14 rounded-xl bg-yellow-500/20 flex items-center justify-center mx-auto mb-4"><svg class="w-7 h-7 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
+       <h3 class="font-bold text-lg font-space mb-2">Performance Check</h3>
+       <p class="text-gray-400 text-sm mb-4">Inverter test, output analysis &amp; wiring inspection</p>
+       <div class="text-orange-400 font-bold text-xl font-space">₹999</div>
+       <p class="text-xs text-gray-500 mt-1">Per visit</p>
+      </div>
+      <div class="pkg-card relative cursor-pointer bg-slate-800/50 rounded-2xl p-6 border-2 border-orange-500/40 text-center" data-pkg="Complete Health Audit">
+       <div class="pkg-check hidden absolute top-3 right-3 w-6 h-6 bg-orange-500 rounded-full items-center justify-center"><svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+       <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>
+       <div class="w-14 h-14 rounded-xl bg-orange-500/20 flex items-center justify-center mx-auto mb-4"><svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+       <h3 class="font-bold text-lg font-space mb-2">Complete Health Audit</h3>
+       <p class="text-gray-400 text-sm mb-4">Full system audit with detailed performance report</p>
+       <div class="text-orange-400 font-bold text-xl font-space">₹1,999</div>
+       <p class="text-xs text-gray-500 mt-1">Per visit</p>
+      </div>
+      <div class="pkg-card relative cursor-pointer bg-slate-800/50 rounded-2xl p-6 border-2 border-white/10 text-center" data-pkg="Annual AMC">
+       <div class="pkg-check hidden absolute top-3 right-3 w-6 h-6 bg-orange-500 rounded-full items-center justify-center"><svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+       <div class="w-14 h-14 rounded-xl bg-green-500/20 flex items-center justify-center mx-auto mb-4"><svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+       <h3 class="font-bold text-lg font-space mb-2">Annual AMC</h3>
+       <p class="text-gray-400 text-sm mb-4">4 visits/year, priority support, all parts included</p>
+       <div class="text-orange-400 font-bold text-xl font-space">₹2,999/yr</div>
+       <p class="text-xs text-gray-500 mt-1">Residential</p>
+      </div>
+     </div>
+     <!-- Booking Form -->
+     <div class="max-w-3xl mx-auto bg-slate-800/50 rounded-3xl p-8 md:p-10 border border-white/10">
+      <h3 class="text-2xl font-bold font-space mb-1">Book Your Service Slot</h3>
+      <p class="text-gray-400 text-sm mb-8">We'll confirm your booking within 2 hours via call or WhatsApp</p>
+      <form id="service-form" class="space-y-5">
+       <input type="hidden" id="service-type" name="serviceType" value="">
+       <div id="selected-pkg-display" class="hidden p-4 bg-orange-500/10 rounded-xl border border-orange-500/30 flex items-center justify-between">
+        <p class="text-sm text-orange-300">Selected: <strong id="selected-pkg-name" class="text-white"></strong></p>
+        <button type="button" id="clear-pkg" class="text-xs text-gray-400 hover:text-white">Change</button>
+       </div>
+       <div class="grid md:grid-cols-2 gap-5">
+        <div><label class="block text-sm font-medium mb-2">Full Name *</label><input type="text" id="svc-name" required class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-500" placeholder="Your name"></div>
+        <div><label class="block text-sm font-medium mb-2">Phone Number *</label><input type="tel" id="svc-phone" required class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-500" placeholder="+91 XXXXX XXXXX"></div>
+       </div>
+       <div class="grid md:grid-cols-2 gap-5">
+        <div><label class="block text-sm font-medium mb-2">Email Address</label><input type="email" id="svc-email" class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-500" placeholder="your@email.com"></div>
+        <div><label class="block text-sm font-medium mb-2">City / Area *</label><input type="text" id="svc-city" required class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-500" placeholder="Your city or area"></div>
+       </div>
+       <div class="grid md:grid-cols-2 gap-5">
+        <div><label class="block text-sm font-medium mb-2">System Size *</label>
+         <select id="svc-size" required class="input-field w-full px-4 py-3 rounded-xl text-white">
+          <option value="" class="bg-slate-800">Select system size</option>
+          <option value="1-3 kW" class="bg-slate-800">1 – 3 kW (Residential)</option>
+          <option value="3-5 kW" class="bg-slate-800">3 – 5 kW (Residential)</option>
+          <option value="5-10 kW" class="bg-slate-800">5 – 10 kW (Large Home)</option>
+          <option value="10-50 kW" class="bg-slate-800">10 – 50 kW (Commercial)</option>
+          <option value="50 kW+" class="bg-slate-800">50 kW+ (Industrial)</option>
+         </select>
+        </div>
+        <div><label class="block text-sm font-medium mb-2">System Age *</label>
+         <select id="svc-age" required class="input-field w-full px-4 py-3 rounded-xl text-white">
+          <option value="" class="bg-slate-800">How old is your system?</option>
+          <option value="Under 1 year" class="bg-slate-800">Under 1 year</option>
+          <option value="1-3 years" class="bg-slate-800">1 – 3 years</option>
+          <option value="3-5 years" class="bg-slate-800">3 – 5 years</option>
+          <option value="5+ years" class="bg-slate-800">5+ years</option>
+         </select>
+        </div>
+       </div>
+       <div class="grid md:grid-cols-2 gap-5">
+        <div><label class="block text-sm font-medium mb-2">Preferred Date *</label><input type="date" id="svc-date" required class="input-field w-full px-4 py-3 rounded-xl text-white"></div>
+        <div><label class="block text-sm font-medium mb-2">Preferred Time Slot *</label>
+         <select id="svc-slot" required class="input-field w-full px-4 py-3 rounded-xl text-white">
+          <option value="" class="bg-slate-800">Select time slot</option>
+          <option value="Morning (9am-12pm)" class="bg-slate-800">Morning (9am – 12pm)</option>
+          <option value="Afternoon (12pm-4pm)" class="bg-slate-800">Afternoon (12pm – 4pm)</option>
+          <option value="Evening (4pm-6pm)" class="bg-slate-800">Evening (4pm – 6pm)</option>
+         </select>
+        </div>
+       </div>
+       <div><label class="block text-sm font-medium mb-2">Issue Description (Optional)</label><textarea id="svc-issue" rows="3" class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-500 resize-none" placeholder="e.g. panels not cleaned in 6 months, inverter showing error, output seems low..."></textarea></div>
+       <button type="submit" class="btn-primary w-full py-4 rounded-xl text-lg font-semibold flex items-center justify-center gap-2">
+        <span>Confirm Service Booking</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+       </button>
+       <p class="text-center text-xs text-gray-500">Our team confirms your slot within 2 hours via call / WhatsApp</p>
+      </form>
+      <div id="service-success" class="hidden text-center py-12">
+       <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-green-500/20 flex items-center justify-center"><svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
+       <h3 class="text-2xl font-bold mb-2 font-space">Booking Received!</h3>
+       <p class="text-gray-400">Our team will confirm your service slot within 2 hours via call or WhatsApp.</p>
+       <a href="#book-service" id="book-another" class="inline-block mt-6 px-6 py-3 rounded-full border border-orange-500/40 text-orange-400 text-sm hover:bg-orange-500/10 transition-colors">Book Another Service</a>
       </div>
      </div>
     </div>
@@ -901,6 +1014,8 @@
         <li><a href="#home" class="hover:text-orange-400 transition-colors">Home</a></li>
         <li><a href="#about" class="hover:text-orange-400 transition-colors">About Us</a></li>
         <li><a href="#services" class="hover:text-orange-400 transition-colors">Services</a></li>
+        <li><a href="#book-service" class="hover:text-orange-400 transition-colors">Book Service</a></li>
+        <li><a href="#faq" class="hover:text-orange-400 transition-colors">FAQ</a></li>
         <li><a href="#contact" class="hover:text-orange-400 transition-colors">Contact</a></li>
        </ul>
       </div>
@@ -1137,6 +1252,90 @@ if (slider) {
   slider.addEventListener("input", function() { updateCalculator(parseInt(this.value)); });
   updateCalculator(3000);
 }
+
+// Service Booking — Package Selection
+const pkgCards = document.querySelectorAll(".pkg-card");
+const serviceTypeInput = document.getElementById("service-type");
+const selectedPkgDisplay = document.getElementById("selected-pkg-display");
+const selectedPkgName = document.getElementById("selected-pkg-name");
+
+pkgCards.forEach(function(card) {
+  card.addEventListener("click", function() {
+    pkgCards.forEach(function(c) { c.classList.remove("selected"); });
+    card.classList.add("selected");
+    const pkg = card.getAttribute("data-pkg");
+    serviceTypeInput.value = pkg;
+    selectedPkgName.textContent = pkg;
+    selectedPkgDisplay.classList.remove("hidden");
+    document.getElementById("service-form").scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+});
+
+document.getElementById("clear-pkg").addEventListener("click", function() {
+  pkgCards.forEach(function(c) { c.classList.remove("selected"); });
+  serviceTypeInput.value = "";
+  selectedPkgDisplay.classList.add("hidden");
+});
+
+// Set date min to tomorrow
+const dateInput = document.getElementById("svc-date");
+if (dateInput) {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  dateInput.min = tomorrow.toISOString().split("T")[0];
+}
+
+// Service Booking — Form Submit
+const SERVICE_WEBHOOK_URL = "https://hook.eu1.make.com/8ge5x99gs431omqhebetr3ilhosigpqr";
+const serviceForm = document.getElementById("service-form");
+const serviceSuccess = document.getElementById("service-success");
+
+serviceForm.addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const btn = serviceForm.querySelector('button[type="submit"]');
+  const origHTML = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<span>Booking...</span>';
+
+  const data = {
+    formType: "SERVICE_BOOKING",
+    name: document.getElementById("svc-name").value,
+    phone: document.getElementById("svc-phone").value,
+    email: document.getElementById("svc-email").value,
+    city: document.getElementById("svc-city").value,
+    systemSize: document.getElementById("svc-size").value,
+    systemAge: document.getElementById("svc-age").value,
+    serviceType: serviceTypeInput.value || "Not selected",
+    preferredDate: document.getElementById("svc-date").value,
+    timeSlot: document.getElementById("svc-slot").value,
+    issue: document.getElementById("svc-issue").value,
+    timestamp: new Date().toISOString()
+  };
+
+  try {
+    await fetch(SERVICE_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+  } catch(err) {
+    console.error("Service booking webhook error:", err);
+  }
+
+  serviceForm.classList.add("hidden");
+  serviceSuccess.classList.remove("hidden");
+
+  document.getElementById("book-another").addEventListener("click", function() {
+    serviceForm.reset();
+    serviceTypeInput.value = "";
+    selectedPkgDisplay.classList.add("hidden");
+    pkgCards.forEach(function(c) { c.classList.remove("selected"); });
+    serviceForm.classList.remove("hidden");
+    serviceSuccess.classList.add("hidden");
+    btn.disabled = false;
+    btn.innerHTML = origHTML;
+  }, { once: true });
+});
 
 // FAQ Accordion
 document.querySelectorAll(".faq-toggle").forEach(function(btn) {
