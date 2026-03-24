@@ -117,6 +117,68 @@
       background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.3), transparent);
       height: 1px;
     }
+    .calc-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #f97316, #fbbf24);
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+    }
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #f97316;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(249,115,22,0.5);
+    }
+    .calc-slider::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #f97316;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 10px rgba(249,115,22,0.5);
+    }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-item.open .faq-answer { max-height: 400px; }
+    .faq-icon { transition: transform 0.3s ease; display: inline-block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      z-index: 100;
+      width: 56px;
+      height: 56px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,0.7); }
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(30,41,59,0.98));
+      border-top: 1px solid rgba(249,115,22,0.3);
+      padding: 12px 16px;
+      display: flex;
+      gap: 10px;
+    }
+    @media (min-width: 768px) { .sticky-cta { display: none !important; } }
   </style>
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -150,7 +212,7 @@
         <p class="text-[10px] md:text-xs text-gray-400 tracking-widest">SOLUTIONS</p>
        </div>
       </div><!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center gap-8"><a href="#home" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Home</a> <a href="#about" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">About</a> <a href="#services" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</a> <a href="#benefits" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Benefits</a> <a href="#contact" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Contact</a>
+      <div class="hidden md:flex items-center gap-8"><a href="#home" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Home</a> <a href="#about" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">About</a> <a href="#services" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</a> <a href="#benefits" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Benefits</a> <a href="#calculator" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Calculator</a> <a href="#faq" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">FAQ</a> <a href="#contact" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Contact</a>
       </div><!-- CTA Button -->
       <div class="hidden md:block"><a href="#contact" class="btn-primary px-6 py-2.5 rounded-full text-sm font-semibold text-white"> Get Free Quote </a>
       </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors">
@@ -159,7 +221,7 @@
      </div>
     </div><!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden hidden bg-slate-900/95 backdrop-blur-lg border-t border-white/10">
-     <div class="px-4 py-4 space-y-3"><a href="#home" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Home</a> <a href="#about" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">About</a> <a href="#services" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Services</a> <a href="#benefits" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Benefits</a> <a href="#contact" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Contact</a> <a href="#contact" class="btn-primary block text-center py-3 rounded-full text-sm font-semibold mt-4">Get Free Quote</a>
+     <div class="px-4 py-4 space-y-3"><a href="#home" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Home</a> <a href="#about" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">About</a> <a href="#services" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Services</a> <a href="#benefits" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Benefits</a> <a href="#calculator" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Calculator</a> <a href="#faq" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">FAQ</a> <a href="#contact" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Contact</a> <a href="#contact" class="btn-primary block text-center py-3 rounded-full text-sm font-semibold mt-4">Get Free Quote</a>
      </div>
     </div>
    </nav><!-- Hero Section -->
@@ -279,7 +341,7 @@
           </svg>
          </div>
          <div>
-          <h4 class="font-semibold mb-1">UPNEDA | MNRE Approved</h4>
+          <h4 class="font-semibold mb-1">UPNEDA | MNRE | MSME Approved</h4>
           <p class="text-sm text-gray-400">Government certified vendor</p>
          </div>
         </div>
@@ -506,31 +568,107 @@
        <h3 class="text-xl font-bold mb-2 font-space">Energy Security</h3>
        <p class="text-gray-400">Reduce dependence on grid power and rising electricity costs</p>
       </div>
-     </div><!-- Savings Calculator Preview -->
-     <div class="mt-16 bg-slate-800/50 rounded-3xl p-8 md:p-12 border border-white/10">
-      <div class="grid lg:grid-cols-2 gap-8 items-center">
-       <div>
-        <h3 class="text-2xl md:text-3xl font-bold mb-4 font-space">Calculate Your <span class="gradient-text">Savings</span></h3>
-        <p class="text-gray-400 mb-6">See how much you can save with a rooftop solar system. Contact us for a detailed analysis based on your electricity consumption.</p>
-        <div class="space-y-4">
-         <div class="flex items-center justify-between p-4 bg-slate-700/50 rounded-xl"><span class="text-gray-300">Monthly Bill ₹3,000</span> <span class="text-green-400 font-semibold">Save ₹2,700/month</span>
-         </div>
-         <div class="flex items-center justify-between p-4 bg-slate-700/50 rounded-xl"><span class="text-gray-300">Monthly Bill ₹5,000</span> <span class="text-green-400 font-semibold">Save ₹4,500/month</span>
-         </div>
-         <div class="flex items-center justify-between p-4 bg-slate-700/50 rounded-xl"><span class="text-gray-300">Monthly Bill ₹10,000</span> <span class="text-green-400 font-semibold">Save ₹9,000/month</span>
-         </div>
+     </div>
+    </div>
+   </section><!-- Calculator Section -->
+   <section id="calculator" class="py-20 md:py-32 relative">
+    <div class="section-divider w-full mb-20"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12"><span class="text-orange-400 text-sm font-semibold tracking-widest uppercase">Savings Calculator</span>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 font-space">Calculate Your <span class="gradient-text">Solar Savings</span></h2>
+      <p class="text-gray-400 text-lg mt-4 max-w-2xl mx-auto">Drag the slider to see your estimated savings and recommended system size</p>
+     </div>
+     <div class="max-w-4xl mx-auto bg-slate-800/50 rounded-3xl p-8 md:p-12 border border-white/10">
+      <div class="mb-8">
+       <div class="flex justify-between items-center mb-4">
+        <label class="text-sm font-medium text-gray-300">Monthly Electricity Bill</label>
+        <span id="bill-display" class="text-2xl font-bold gradient-text font-space">₹3,000</span>
+       </div>
+       <input type="range" id="bill-slider" min="500" max="50000" step="500" value="3000" class="calc-slider w-full">
+       <div class="flex justify-between text-xs text-gray-500 mt-2"><span>₹500</span><span>₹50,000</span></div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+       <div class="bg-slate-700/50 rounded-2xl p-6 text-center border border-white/10">
+        <div class="text-3xl font-bold text-green-400 font-space" id="monthly-savings">₹2,700</div>
+        <div class="text-gray-400 text-sm mt-2">Monthly Savings</div>
+       </div>
+       <div class="bg-slate-700/50 rounded-2xl p-6 text-center border border-white/10">
+        <div class="text-3xl font-bold text-yellow-400 font-space" id="yearly-savings">₹32,400</div>
+        <div class="text-gray-400 text-sm mt-2">Yearly Savings</div>
+       </div>
+       <div class="bg-slate-700/50 rounded-2xl p-6 text-center border border-white/10">
+        <div class="text-3xl font-bold gradient-text font-space" id="payback-period">3.5 yrs</div>
+        <div class="text-gray-400 text-sm mt-2">Payback Period</div>
+       </div>
+      </div>
+      <div class="mt-8 p-6 bg-orange-500/10 rounded-2xl border border-orange-500/20">
+       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div>
+         <p class="font-semibold text-orange-300">Recommended System: <span id="system-size" class="text-white">3 kW</span></p>
+         <p class="text-sm text-gray-400 mt-1">Estimated cost after govt. subsidy: <span id="system-cost" class="text-white font-semibold">₹1,17,000</span></p>
+        </div><a href="#contact" class="btn-primary px-6 py-3 rounded-full font-semibold whitespace-nowrap text-sm">Get Exact Quote →</a>
+       </div>
+      </div>
+      <div class="mt-6 p-6 bg-green-500/10 rounded-2xl border border-green-500/20">
+       <h4 class="font-semibold text-green-400 mb-4">🏛️ PM Surya Ghar Muft Bijli Yojana — Govt. Subsidy</h4>
+       <div class="grid grid-cols-3 gap-4 text-center text-sm">
+        <div class="bg-green-900/20 rounded-xl p-3">
+         <div class="text-white font-bold text-lg">₹30,000</div>
+         <div class="text-gray-400 mt-1">1 kW System</div>
+        </div>
+        <div class="bg-green-900/20 rounded-xl p-3">
+         <div class="text-white font-bold text-lg">₹60,000</div>
+         <div class="text-gray-400 mt-1">2 kW System</div>
+        </div>
+        <div class="bg-green-900/20 rounded-xl p-3 border border-green-500/30">
+         <div class="text-green-400 font-bold text-lg">₹78,000</div>
+         <div class="text-gray-400 mt-1">3+ kW System</div>
         </div>
        </div>
-       <div class="text-center">
-        <div class="inline-block p-8 rounded-full bg-gradient-to-br from-orange-500/20 to-yellow-500/20 border border-orange-500/30">
-         <div class="text-5xl md:text-6xl font-bold gradient-text font-space">
-          90%
-         </div>
-         <div class="text-gray-400 mt-2">
-          Average Savings
-         </div>
+       <p class="text-xs text-gray-500 mt-4">* Subsidy directly credited to your bank account by the government. We handle all paperwork for free.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Testimonials Section -->
+   <section id="testimonials" class="py-20 md:py-32 relative">
+    <div class="section-divider w-full mb-20"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16"><span class="text-orange-400 text-sm font-semibold tracking-widest uppercase">Customer Reviews</span>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 font-space">What Our <span class="gradient-text">Customers Say</span></h2>
+      <p class="text-gray-400 text-lg mt-4">Real stories from real solar customers across India</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-slate-800/50 rounded-2xl p-6 border border-white/10 card-glow service-card">
+       <div class="text-yellow-400 text-xl mb-4">★★★★★</div>
+       <p class="text-gray-300 leading-relaxed mb-6">"Our electricity bill dropped from ₹8,000 to under ₹500 every month. Shukla Solar handled all the government paperwork and completed installation in just 3 days. Excellent service!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center font-bold text-orange-400 flex-shrink-0">R</div>
+        <div>
+         <div class="font-semibold text-sm">Rajesh Verma</div>
+         <div class="text-xs text-gray-400">5 kW System · Lucknow</div>
         </div>
-        <p class="mt-6 text-gray-400">Payback period: 3-4 years</p><a href="#contact" class="btn-primary inline-block mt-6 px-8 py-3 rounded-full font-semibold">Get Exact Quote</a>
+       </div>
+      </div>
+      <div class="bg-slate-800/50 rounded-2xl p-6 border border-white/10 card-glow service-card">
+       <div class="text-yellow-400 text-xl mb-4">★★★★★</div>
+       <p class="text-gray-300 leading-relaxed mb-6">"I got ₹78,000 government subsidy and now save ₹4,200 every month. The team explained everything clearly and handled all the paperwork. Best investment I've ever made!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center font-bold text-blue-400 flex-shrink-0">P</div>
+        <div>
+         <div class="font-semibold text-sm">Priya Sharma</div>
+         <div class="text-xs text-gray-400">3 kW System · Kanpur</div>
+        </div>
+       </div>
+      </div>
+      <div class="bg-slate-800/50 rounded-2xl p-6 border border-white/10 card-glow service-card">
+       <div class="text-yellow-400 text-xl mb-4">★★★★★</div>
+       <p class="text-gray-300 leading-relaxed mb-6">"Installed 10 kW for my factory. Reduced operational costs by 70%. The AMC team is very responsive. Shukla Solar is professional and completely trustworthy. Highly recommended!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center font-bold text-green-400 flex-shrink-0">A</div>
+        <div>
+         <div class="font-semibold text-sm">Amit Gupta</div>
+         <div class="text-xs text-gray-400">10 kW System · Varanasi</div>
+        </div>
        </div>
       </div>
      </div>
@@ -639,7 +777,7 @@
        </div><!-- Trust Badges -->
        <div class="mt-10 flex flex-wrap gap-4">
         <div class="px-4 py-2 bg-slate-800/50 rounded-lg border border-white/10">
-         <p class="text-xs text-gray-400">🏆 UPNEDA | MNRE Approved</p>
+         <p class="text-xs text-gray-400">🏆 UPNEDA | MNRE | MSME Approved</p>
         </div>
         <div class="px-4 py-2 bg-slate-800/50 rounded-lg border border-white/10">
          <p class="text-xs text-gray-400">✅ ISO Certified</p>
@@ -675,6 +813,58 @@
         <h3 class="text-2xl font-bold mb-2 font-space">Thank You!</h3>
         <p class="text-gray-400">We've received your inquiry. Our team will contact you within 24 hours.</p>
        </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- FAQ Section -->
+   <section id="faq" class="py-20 md:py-32 relative">
+    <div class="section-divider w-full mb-20"></div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16"><span class="text-orange-400 text-sm font-semibold tracking-widest uppercase">FAQ</span>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 font-space">Frequently Asked <span class="gradient-text">Questions</span></h2>
+     </div>
+     <div class="border border-white/10 rounded-2xl overflow-hidden">
+      <div class="faq-item">
+       <button class="faq-toggle w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors">
+        <span class="font-semibold pr-4">How much does a rooftop solar system cost?</span>
+        <span class="faq-icon text-orange-400 text-2xl flex-shrink-0">+</span>
+       </button>
+       <div class="faq-answer"><p class="text-gray-400 px-6 pb-6">A 1 kW system costs approximately ₹60,000–₹75,000 before subsidy. With the PM Surya Ghar Muft Bijli Yojana subsidy (up to ₹78,000 for 3+ kW systems), your effective cost is significantly lower. We provide detailed quotes after a free site survey.</p></div>
+      </div>
+      <div class="faq-item border-t border-white/10">
+       <button class="faq-toggle w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors">
+        <span class="font-semibold pr-4">How long does installation take?</span>
+        <span class="faq-icon text-orange-400 text-2xl flex-shrink-0">+</span>
+       </button>
+       <div class="faq-answer"><p class="text-gray-400 px-6 pb-6">Typically 2–3 days for residential systems. This includes mounting, wiring, inverter installation, and commissioning. Net metering approval from DISCOM may take an additional 2–4 weeks, which we handle for you.</p></div>
+      </div>
+      <div class="faq-item border-t border-white/10">
+       <button class="faq-toggle w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors">
+        <span class="font-semibold pr-4">What is the payback period?</span>
+        <span class="faq-icon text-orange-400 text-2xl flex-shrink-0">+</span>
+       </button>
+       <div class="faq-answer"><p class="text-gray-400 px-6 pb-6">With current electricity rates and government subsidies, most residential systems pay for themselves in 3–4 years. After that, you enjoy free electricity for the remaining 21+ years of the panel's 25-year warranty period.</p></div>
+      </div>
+      <div class="faq-item border-t border-white/10">
+       <button class="faq-toggle w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors">
+        <span class="font-semibold pr-4">What happens on cloudy days or at night?</span>
+        <span class="faq-icon text-orange-400 text-2xl flex-shrink-0">+</span>
+       </button>
+       <div class="faq-answer"><p class="text-gray-400 px-6 pb-6">Solar panels still generate electricity on cloudy days at reduced efficiency (15–25%). On-grid systems draw from the grid when needed and earn credits when you produce excess. Battery backup systems keep you powered 24/7 even without grid or sun.</p></div>
+      </div>
+      <div class="faq-item border-t border-white/10">
+       <button class="faq-toggle w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors">
+        <span class="font-semibold pr-4">Do you handle government subsidy paperwork?</span>
+        <span class="faq-icon text-orange-400 text-2xl flex-shrink-0">+</span>
+       </button>
+       <div class="faq-answer"><p class="text-gray-400 px-6 pb-6">Yes, absolutely! We handle all documentation for PM Surya Ghar Muft Bijli Yojana subsidies, UPNEDA registration, net metering applications, and DISCOM approvals at no extra charge. The subsidy is directly credited to your bank account.</p></div>
+      </div>
+      <div class="faq-item border-t border-white/10">
+       <button class="faq-toggle w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors">
+        <span class="font-semibold pr-4">What warranty do you offer?</span>
+        <span class="faq-icon text-orange-400 text-2xl flex-shrink-0">+</span>
+       </button>
+       <div class="faq-answer"><p class="text-gray-400 px-6 pb-6">We offer 25-year performance warranty on solar panels, 5-year warranty on inverters, and 1-year workmanship warranty on installation. Annual Maintenance Contracts (AMC) are also available for long-term system performance and peace of mind.</p></div>
       </div>
      </div>
     </div>
@@ -725,7 +915,7 @@
       </div>
      </div>
      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-sm text-gray-500">© 2024 Shukla Solar Solutions. All rights reserved.</p>
+      <p class="text-sm text-gray-500">© 2026 Shukla Solar Solutions. All rights reserved.</p>
       <div class="flex gap-4"><a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-orange-500/20 transition-colors">
         <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
         </svg></a> <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-orange-500/20 transition-colors">
@@ -737,6 +927,15 @@
      </div>
     </div>
    </footer>
+   <!-- WhatsApp Floating Button -->
+   <a href="https://wa.me/919628275110?text=Hi%2C%20I%20am%20interested%20in%20solar%20installation.%20Please%20share%20details." target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+   </a>
+   <!-- Sticky Mobile CTA -->
+   <div class="sticky-cta">
+    <a href="tel:+919628275110" class="flex-1 bg-slate-700 text-white text-center py-3 rounded-xl font-semibold text-sm">📞 Call Now</a>
+    <a href="#contact" class="flex-1 btn-primary text-white text-center py-3 rounded-xl font-semibold text-sm">Get Free Quote</a>
+   </div>
   </div>
   <script>
     // Default configuration
@@ -829,24 +1028,7 @@
       });
     });
 
-    // Form submission
-    const contactForm = document.getElementById('contact-form');
-    const successMessage = document.getElementById('success-message');
-
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      // Hide form and show success message
-      contactForm.classList.add('hidden');
-      successMessage.classList.remove('hidden');
-      
-      // Reset form after delay
-      setTimeout(() => {
-        contactForm.reset();
-        contactForm.classList.remove('hidden');
-        successMessage.classList.add('hidden');
-      }, 5000);
-    });
+    // Form submission handled in DOMContentLoaded below
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -895,7 +1077,10 @@ const form = document.getElementById("contact-form");
 
 form.addEventListener("submit", async function(e) {
   e.preventDefault();
-  console.log("Form submitted");
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const origBtnHTML = submitBtn.innerHTML;
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '<span>Sending...</span>';
 
   const data = {
     name: document.getElementById("name").value,
@@ -908,14 +1093,59 @@ form.addEventListener("submit", async function(e) {
     timestamp: new Date().toISOString()
   };
 
-  await fetch(MAKE_WEBHOOK_URL, {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(data)
-  });
+  try {
+    await fetch(MAKE_WEBHOOK_URL, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(data)
+    });
+  } catch(err) {
+    console.error("Webhook error:", err);
+  }
 
-  alert("Submitted successfully");
-  form.reset();
+  form.classList.add("hidden");
+  document.getElementById("success-message").classList.remove("hidden");
+
+  setTimeout(function() {
+    form.reset();
+    form.classList.remove("hidden");
+    document.getElementById("success-message").classList.add("hidden");
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = origBtnHTML;
+  }, 5000);
+});
+
+// Solar Savings Calculator
+const slider = document.getElementById("bill-slider");
+if (slider) {
+  function updateCalculator(bill) {
+    const savings = Math.round(bill * 0.9);
+    const yearlySavings = savings * 12;
+    const kw = Math.max(1, Math.round(bill / 1500));
+    const costPerKw = 65000;
+    const subsidy = kw >= 3 ? 78000 : kw === 2 ? 60000 : 30000;
+    const systemCost = Math.max(0, (kw * costPerKw) - subsidy);
+    const payback = systemCost > 0 ? (systemCost / yearlySavings).toFixed(1) : "< 1";
+    const fmt = function(n) { return "\u20B9" + n.toLocaleString("en-IN"); };
+    document.getElementById("bill-display").textContent = fmt(bill);
+    document.getElementById("monthly-savings").textContent = fmt(savings);
+    document.getElementById("yearly-savings").textContent = fmt(yearlySavings);
+    document.getElementById("payback-period").textContent = payback + " yrs";
+    document.getElementById("system-size").textContent = kw + " kW";
+    document.getElementById("system-cost").textContent = fmt(systemCost);
+  }
+  slider.addEventListener("input", function() { updateCalculator(parseInt(this.value)); });
+  updateCalculator(3000);
+}
+
+// FAQ Accordion
+document.querySelectorAll(".faq-toggle").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    const item = this.closest(".faq-item");
+    const isOpen = item.classList.contains("open");
+    document.querySelectorAll(".faq-item").forEach(function(i) { i.classList.remove("open"); });
+    if (!isOpen) item.classList.add("open");
+  });
 });
 
 });
