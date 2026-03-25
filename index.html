@@ -1392,7 +1392,7 @@ End of Tawk.to Script -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
-const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/8ge5x99gs431omqhebetr3ilhosigpqr";
+const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/atq0so4l1js12f8ryxidz5b3iob9j68v";
 
 function classifyLead(billRange) {
   if (billRange === "10000-20000" || billRange === "20000+") return "HOT";
@@ -1410,6 +1410,7 @@ form.addEventListener("submit", async function(e) {
   submitBtn.innerHTML = '<span>Sending...</span>';
 
   const data = {
+    formType: 'quote',
     name: document.getElementById("name").value,
     phone: document.getElementById("phone").value,
     email: document.getElementById("email").value,
@@ -1511,7 +1512,7 @@ if (dateInput) {
 }
 
 // Service Booking — Form Submit
-const SERVICE_WEBHOOK_URL = "https://hook.eu1.make.com/8ge5x99gs431omqhebetr3ilhosigpqr";
+const SERVICE_WEBHOOK_URL = "https://hook.eu1.make.com/atq0so4l1js12f8ryxidz5b3iob9j68v";
 const serviceForm = document.getElementById("service-form");
 const serviceSuccess = document.getElementById("service-success");
 
@@ -1523,7 +1524,7 @@ serviceForm.addEventListener("submit", async function(e) {
   btn.innerHTML = '<span>Booking...</span>';
 
   const data = {
-    formType: "SERVICE_BOOKING",
+    formType: "service",
     name: document.getElementById("svc-name").value,
     phone: document.getElementById("svc-phone").value,
     email: document.getElementById("svc-email").value,
